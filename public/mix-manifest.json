@@ -1,4 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/homepage-stack.js": "/js/homepage-stack.js",
+    "/js/subpage-stack.js": "/js/subpage-stack.js",
+    "/css/homepage-stack.css": "/css/homepage-stack.css",
+    "/css/homepage-stack.min.css": "/css/homepage-stack.min.css"
 }

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Routing\Router;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,29 @@
 |
 */
 
-Route::prefix('page')->group(function() {
-    Route::get('/', 'PageController@index');
-});
+
+/*
+|--------------------------------------------------------------------------
+| Frontend routes
+|--------------------------------------------------------------------------
+*/
+$router->get('/', [
+    'uses' => 'PublicController@homepage',
+    'as' => 'page.homepage'
+]);
+
+$router->get('{uri}', [ // subpage
+    'uses' => 'PublicController@subpage',
+    'as' => 'page.subpage',
+])->where('uri', '.*');
+
+
+/*
+|--------------------------------------------------------------------------
+| Backend routes
+|--------------------------------------------------------------------------
+*/
+
+// $router->group(['prefix' => '/system-backend', 'middleware' => ['auth', 'verified', 'admin']], function (Router $router) {
+
+// });
