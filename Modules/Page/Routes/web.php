@@ -24,6 +24,17 @@ $router->get('/', [
     'as' => 'page.homepage'
 ]);
 
+$router->group(['prefix' => 'contact'], function (Router $router) {
+    $router->get('/', [ // contact page
+        'uses' => 'PublicController@contact',
+        'as' => 'page.contact',
+    ]);
+    $router->post('/send-contact', [
+        'uses' => 'PublicController@sendContact',
+        'as' => 'page.send-contact',
+    ]);
+});
+
 $router->get('{uri}', [ // subpage
     'uses' => 'PublicController@subpage',
     'as' => 'page.subpage',
@@ -36,6 +47,6 @@ $router->get('{uri}', [ // subpage
 |--------------------------------------------------------------------------
 */
 
-// $router->group(['prefix' => '/system-backend', 'middleware' => ['auth', 'verified', 'admin']], function (Router $router) {
+// $router->group(['prefix' => env('BACKEND_URI'), 'middleware' => ['auth', 'verified', 'admin']], function (Router $router) {
 
 // });

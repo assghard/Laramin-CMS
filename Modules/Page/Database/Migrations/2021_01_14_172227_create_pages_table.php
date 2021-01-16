@@ -25,14 +25,16 @@ class CreatePagesTable extends Migration
             $table->string('caption')->nullable();
             $table->longText('body')->nullable();
 
-            // $table->string('meta_title')->nullable();
-            // $table->string('meta_description')->nullable();
-            // $table->string('og_title')->nullable();
-            // $table->string('og_description')->nullable();
-            // $table->string('og_image')->nullable();
-            // $table->string('og_type')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('og_title')->nullable();
+            $table->string('og_description')->nullable();
+            $table->string('og_type')->nullable();
+            $table->string('og_image')->nullable();
 
             $table->timestamps();
+
+            $table->index('slug');
         });
     }
 

@@ -5,5 +5,11 @@
 @import '~bootstrap/scss/bootstrap';
 
 body{
-    padding-top: 55px;
+    padding-top: 60px;
+}
+
+
+div.btn,
+button.btn{
+    border-radius: 0;
 }

@@ -10,6 +10,12 @@
                 <li class="nav-item {{ $homepageLink ?? '' }}">
                     <a class="nav-link" href="{{ env('APP_URL') }}">Homepage <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item {{ $subpageLink ?? '' }}">
+                    <a class="nav-link" href="{{ route('page.subpage', 'subpage') }}">Subpage</a>
+                </li>
+                <li class="nav-item {{ $contactLink ?? '' }}">
+                    <a class="nav-link" href="{{ route('page.contact') }}">Contact</a>
+                </li>
                 <li class="nav-item {{ $link1 ?? '' }}">
                     <a class="nav-link" href="">Link 1</a>
                 </li>

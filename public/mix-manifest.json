@@ -1,6 +1,8 @@
 {
     "/js/homepage-stack.js": "/js/homepage-stack.js",
     "/js/subpage-stack.js": "/js/subpage-stack.js",
+    "/css/subpage-stack.css": "/css/subpage-stack.css",
     "/css/homepage-stack.css": "/css/homepage-stack.css",
-    "/css/homepage-stack.min.css": "/css/homepage-stack.min.css"
+    "/css/homepage-stack.min.css": "/css/homepage-stack.min.css",
+    "/css/subpage-stack.min.css": "/css/subpage-stack.min.css"
 }

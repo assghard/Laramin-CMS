@@ -1,17 +1,17 @@
 @extends('layouts.master', ['homepageLink' => 'active'])
 
-@section('title')Homepage | {{ env('APP_NAME') }} @stop
+@section('title'){{ env('APP_NAME') }} @stop
 
 @section('meta')
-    <meta name="title" content="Meta title - {{ env('APP_NAME') }}" />
-    <meta name="description" content="Meta description - {{ env('APP_NAME') }}" />
+    <meta name="title" content="{{ $page->meta_title }}" />
+    <meta name="description" content="{{ $page->meta_description }}" />
 
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
-    <meta property="og:title" content="{{ env('APP_NAME') }}" />
-    <meta property="og:description" content="" />
-    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ $page->og_title ?? $page->meta_title }}" />
+    <meta property="og:description" content="{{ $page->og_description ?? $page->meta_description }}" />
+    <meta property="og:type" content="{{ $page->og_type ?? 'Article' }}" />
     <meta property="og:url" content="{{ url('/') }}" />
-    <meta property="og:image" content="{{ asset('img/logo.jpg') }}" />
+    {{-- <meta property="og:image" content="{{ asset('img/logo.jpg') }}" /> --}}
     {{-- <link rel="amphtml" href="/amp/index.html" /> --}}
 
     <script type="application/ld+json">
@@ -23,7 +23,7 @@
           "image": [
             "{{ asset('img/logo.jpg') }}"
            ],
-          "description": ""
+          "description": "{{ $page->og_description ?? $page->meta_description }}"
         }
     </script>
 @stop
@@ -38,11 +38,11 @@
 
 @section('content')
     <div class="container">
-        <h1 class="lead-text center-text">
-            {{ env('APP_NAME') }}
+        <h1 class="center-text">
+            {{ $page->title }}
         </h1>
         
-        Homepage content
+        {!! $page->body !!}
     </div>
 @stop
 

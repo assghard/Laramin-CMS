@@ -1,15 +1,15 @@
-@extends('layouts.master', ['subpageLink' => 'active'])
+@extends('layouts.master', ['contactLink' => 'active'])
 
-@section('title') {{ $page->title }} | {{ env('APP_NAME') }} @stop
+@section('title') Contact | {{ env('APP_NAME') }} @stop
 
 @section('meta')
-    <meta name="title" content="{{ $page->meta_title }}" />
-    <meta name="description" content="{{ $page->meta_description }}" />
+    <meta name="title" content="" />
+    <meta name="description" content="" />
 
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
-    <meta property="og:title" content="{{ $page->og_title ?? $page->meta_title }}" />
-    <meta property="og:description" content="{{ $page->og_description ?? $page->meta_description }}" />
-    <meta property="og:type" content="{{ $page->og_type ?? 'Article' }}" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="Website" />
     <meta property="og:url" content="{{ url('/') }}" />
 
     {{-- @if($page->getMedia('og_image')->first())
@@ -29,8 +29,16 @@
 
 @section('content')
     <div class="container">
-        <h1>{{ $page->title }}</h1>
-        {!! $page->body !!}
+        <h1>Contact us</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                @include('pages.partials.contact-form')
+            </div>
+            <div class="col-md-6">
+                <h2>Company data here</h2>
+            </div>
+        </div>
     </div>
 @stop
 
