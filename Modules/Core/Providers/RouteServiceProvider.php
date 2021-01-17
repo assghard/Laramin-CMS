@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Dashboard\Providers;
+namespace Modules\Core\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $moduleNamespace = 'Modules\Dashboard\Http\Controllers';
+    protected $moduleNamespace = 'Modules\Core\Http\Controllers';
 
     /**
      * Called before routes are registered.
@@ -34,8 +34,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
-        // $this->mapWebRoutes();
-        $this->mapBackendRoutes();
+
+        $this->mapWebRoutes();
     }
 
     /**
@@ -45,25 +45,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    // protected function mapWebRoutes()
-    // {
-    //     Route::middleware('web')
-    //         ->namespace($this->moduleNamespace)
-    //         ->group(module_path('Dashboard', '/Routes/web.php'));
-    // }
-
-    /**
-     * Define the "backend" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapBackendRoutes()
+    protected function mapWebRoutes()
     {
         Route::middleware('web')
             ->namespace($this->moduleNamespace)
-            ->group(module_path('Dashboard', '/Routes/backend.php'));
+            ->group(module_path('Core', '/Routes/web.php'));
     }
 
     /**
@@ -78,6 +64,6 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->moduleNamespace)
-            ->group(module_path('Dashboard', '/Routes/api.php'));
+            ->group(module_path('Core', '/Routes/api.php'));
     }
 }

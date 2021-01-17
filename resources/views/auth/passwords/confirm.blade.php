@@ -1,4 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@push('style')
+    @if (env('APP_ENV') == 'production')
+        <link rel="stylesheet" href="{{ url('/css/subpage-stack.css') }}" />
+    @else
+        <link rel="stylesheet" href="{{ mix('/css/subpage-stack.css') }}" />
+    @endif
+@endpush
 
 @section('content')
 <div class="container">
@@ -47,3 +55,11 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    @if (env('APP_ENV') == 'production')
+        <script src="{{ url('/js/subpage-stack.js') }}"></script>
+    @else
+        <script src="{{ mix('/js/subpage-stack.js') }}"></script>
+    @endif
+@endpush

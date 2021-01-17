@@ -17,4 +17,6 @@ use Illuminate\Routing\Router;
 
 Auth::routes(['verify' => true]);
 
+// TODO: turn off register/auth routes
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

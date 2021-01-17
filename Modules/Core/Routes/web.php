@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('dashboard')->group(function() {
-    Route::get('/', 'DashboardController@index');
-});
+// Route::prefix('core')->group(function() {
+//     Route::get('/', 'CoreController@index');
+// });

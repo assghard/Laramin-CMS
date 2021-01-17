@@ -14,7 +14,6 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('page__pages', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->id();
 
             $table->boolean('is_homepage')->default(0);

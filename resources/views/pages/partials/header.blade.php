@@ -30,7 +30,32 @@
                         <a class="dropdown-item" href="">Link 2</a>
                     </div>
                 </li>
+
             </ul>
+            @if (Route::has('login'))
+                <ul class="navbar-nav">
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ \Auth::user()->email }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                {{ csrf_field() }}
+                            </form>
+                            <a class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="cursor: pointer;"><span class="oi oi-account-logout"></span> Logout</a>
+                        </li>
+                    @else
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}"><span class="oi oi-person"></span> Sign up</a>
+                            </li>
+                        @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}"><span class="oi oi-account-login"></span> Sign in</a>
+                        </li>
+                    @endauth
+                </ul>
+            @endif
         </div>
     </nav>
 </header>
