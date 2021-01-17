@@ -13,8 +13,8 @@ class ContactRequestEmail extends Mailable {
         SerializesModels;
 
 
-     protected $email;
-     protected $description;
+    protected $email;
+    protected $description;
     
     /**
      * Create a new message instance.

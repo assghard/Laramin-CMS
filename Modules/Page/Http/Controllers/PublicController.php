@@ -8,6 +8,7 @@ use Modules\Page\Http\Requests\SendContactFormRequest;
 use Modules\Page\Entities\ContactRequest;
 use Illuminate\Support\Facades\Mail;
 use Modules\Page\Mails\ContactRequestEmail;
+use Modules\Core\Entities\SystemErrorEntity;
 
 class PublicController extends Controller
 {
@@ -31,7 +32,10 @@ class PublicController extends Controller
 
             return redirect()->back()->withSuccess('Your request has been sent successfully');
         } catch (\Throwable $th) {
-            // TODO: system error
+            SystemErrorEntity::createEntity('Page, PublicController sendContact ERROR', [
+                'message' => $th->getMessage()
+            ]);
+
             return redirect()->back()->with('Send request ERROR! Try again');
         }
     }

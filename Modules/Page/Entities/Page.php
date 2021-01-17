@@ -24,7 +24,7 @@ class Page extends Model
         'og_image'
     ];
 
-        /**
+    /**
      * The "booting" method of the model.
      *
      * @return void
@@ -37,9 +37,7 @@ class Page extends Model
             if (strpos(request()->getPathInfo(), env('BACKEND_URI'))) {
                 return;
             }
-        } catch (\Throwable $th) {
-            // TODO System error entity
-        }
+        } catch (\Throwable $th) {}
 
         static::addGlobalScope(new PageScope()); // frontend Page scope: only active pages are available for user
     }
