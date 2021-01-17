@@ -20,9 +20,9 @@ class SystemErrorAdminEmail extends Mailable {
     }
 
     public function build() {     
-        return $this->view('emails.template')->subject('System ERROR alert')->with([
+        return $this->view('core::emails.template')->subject('System ERROR alert')->with([
             'errorName' => $this->errorName,
-            'partial' => 'core::emails.system-error-alert'
+            'partial' => 'core::emails.system.system-error-alert'
         ]);
     }
 

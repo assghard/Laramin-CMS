@@ -31,7 +31,7 @@ class ContactRequestEmail extends Mailable {
      * @return $this
      */
     public function build() {
-        return $this->view('emails.template')->subject('Contact request from '.env('APP_NAME'))->with([
+        return $this->view('core::emails.template')->subject('Contact request from '.env('APP_NAME'))->with([
             'email' => $this->email,
             'description' => $this->description,
             'partial' => 'emails.page.contact-request'
