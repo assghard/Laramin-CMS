@@ -5,6 +5,8 @@ namespace Modules\Dashboard\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Models\User;
+use Modules\Page\Entities\Page;
 
 class DashboardController extends Controller
 {
@@ -14,7 +16,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard::index');
+        $usersCount = cache()->remember('users-count', 60*60*12, function () {
+            return User::count();
+        });
+
+        $pagesCount = cache()->remember('pages-count', 60*60*12, function () {
+            return Page::count();
+        });
+
+        return view('dashboard::index', compact('usersCount', 'pagesCount'));
     }
 
     /**

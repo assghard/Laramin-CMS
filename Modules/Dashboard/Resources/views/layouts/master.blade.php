@@ -13,9 +13,9 @@
         <title>@section('title')@show | System Dashboard | {{ env('APP_NAME') }}</title>
 
         @if (env('APP_ENV') == 'production')
-            {{-- <link rel="stylesheet" href="{{ url('/css/dashboard.css') }}" /> --}}
+            <link rel="stylesheet" href="{{ url('/css/dashboard.css') }}" />
         @else
-            {{-- <link rel="stylesheet" href="{{ mix('/css/dashboard.css') }}" /> --}}
+            <link rel="stylesheet" href="{{ mix('/css/dashboard.css') }}" />
         @endif
         @stack('styles')
 
@@ -41,9 +41,9 @@
         </div>
 
         @if (env('APP_ENV') == 'production')
-            {{-- <script src="{{ mix('/js/dashboard.js') }}"></script> --}}
+            <script src="{{ mix('/js/dashboard.js') }}"></script>
         @else
-            {{-- <script src="{{ url('/js/dashboard.js') }}"></script> --}}
+            <script src="{{ url('/js/dashboard.js') }}"></script>
         @endif
         @stack('scripts')
     </body>

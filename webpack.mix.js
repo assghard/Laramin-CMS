@@ -18,6 +18,6 @@ mix.js(['resources/js/page/subpage-stack.js'], 'public/js/subpage-stack.js');
 mix.sass('resources/sass/page/homepage-stack.scss', 'public/css').minify('public/css/homepage-stack.css');
 mix.sass('resources/sass/page/subpage-stack.scss', 'public/css').minify('public/css/subpage-stack.css');
 
-// mix.js('resources/js/app.js', 'public/js')
-//     .sass('resources/sass/app.scss', 'public/css')
-//     .sourceMaps();
+// Dashboard
+mix.sass('resources/sass/dashboard/dashboard.scss', 'public/css').minify('public/css/dashboard.min.css');
+mix.js(['resources/js/dashboard/dashboard.js'], 'public/js/dashboard.js');

@@ -44,9 +44,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="logout('{{ route('logout') }}')">
-                    <span class="oi oi-account-logout"></span>
-                    TODO: Logout
+                <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <span class="oi oi-account-logout"></span> Logout
                 </a>
             </li>
         </ul>
