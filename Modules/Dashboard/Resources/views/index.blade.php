@@ -12,7 +12,7 @@
                         Users in database
                     </div>
                 </div>
-                <a href="{{-- route('dashboard.users.index') --}}" class="btn btn-primary btn-block">Users <span class="oi oi-arrow-right"></span></a>
+                <a href="{{ route('dashboard.users.index') }}" class="btn btn-primary btn-block">Users <span class="oi oi-arrow-right"></span></a>
             </div>
         </div>
         <div class="col-lg-3">

@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ $usersTab ?? '' }}" href="{{-- route('dashboard.users.index') --}}">
+                <a class="nav-link {{ $usersTab ?? '' }}" href="{{ route('dashboard.users.index') }}">
                     <span class="oi oi-person"></span>
                     Users
                 </a>

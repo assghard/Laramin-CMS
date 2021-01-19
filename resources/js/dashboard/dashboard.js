@@ -14,10 +14,10 @@ $(function () {
     });
 });
 
-// window.unlockInput = function (button, input_id) {
-//     $(button).addClass('d-none');
-//     $(input_id).removeAttr('readonly').focus();
-// };
+window.unlockInput = function (button, input_id) {
+    $(button).addClass('d-none');
+    $(input_id).removeAttr('readonly').focus();
+}
 
 // window.systemAlert = function (type, message) {
 //     swal.fire({ html: message, icon: type }).then(function () {
@@ -49,52 +49,52 @@ $(function () {
 //     }).catch(swal.noop);
 // };
 
-// window.deleteEntity = function (route, event, returnUrl = null) {
-//     event.preventDefault();
-//     swal.fire({
-//         text: 'Delete object',
-//         showCancelButton: true,
-//         confirmButtonColor: '#d33',
-//         cancelButtonColor: '#1D5080',
-//         confirmButtonText: 'Yes',
-//         cancelButtonText: 'No',
-//         focusCancel: true,
-//         timer: 10000,
-//         timerProgressBar: true,
-//         allowOutsideClick: () => {
-//             swal.close();
-//         }
-//     }).then(function (btn) {
-//         if (btn.value) {
-//             if (btn.value === true) { // remove
-//                 $.ajax({
-//                     url: route,
-//                     type: 'DELETE',
-//                     data: {},
-//                     timeout: ajaxTimeout,
-//                     success: function (result) {
-//                         if (result.success === true) {
-//                             systemSuccessSweetAlert(function () {
-//                                 if (!returnUrl) {
-//                                     location.reload();
-//                                     return;
-//                                 }
-//                                 window.location.href = returnUrl;
-//                             });
-//                         } else {
-//                             systemErrorSweetAlert();
-//                         }
-//                     },
-//                     error: function () {
-//                         systemErrorSweetAlert();
-//                     }
-//                 }).fail(function () {
-//                     systemErrorSweetAlert();
-//                 });
-//             }
-//         }
-//     }).catch(swal.noop);
-// };
+window.deleteEntity = function (route, event, returnUrl = null) {
+    event.preventDefault();
+    swal.fire({
+        text: 'Delete object',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#1D5080',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        focusCancel: true,
+        timer: 10000,
+        timerProgressBar: true,
+        allowOutsideClick: () => {
+            swal.close();
+        }
+    }).then(function (btn) {
+        if (btn.value) {
+            if (btn.value === true) { // remove
+                $.ajax({
+                    url: route,
+                    type: 'DELETE',
+                    data: {},
+                    timeout: ajaxTimeout,
+                    success: function (result) {
+                        if (result.success === true) {
+                            systemSuccessSweetAlert(function () {
+                                if (!returnUrl) {
+                                    location.reload();
+                                    return;
+                                }
+                                window.location.href = returnUrl;
+                            });
+                        } else {
+                            systemErrorSweetAlert();
+                        }
+                    },
+                    error: function () {
+                        systemErrorSweetAlert();
+                    }
+                }).fail(function () {
+                    systemErrorSweetAlert();
+                });
+            }
+        }
+    }).catch(swal.noop);
+}
 
 // const app = new Vue({
 //     el: '#app',
