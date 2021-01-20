@@ -9,7 +9,7 @@
         {{ method_field('PUT') }}
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <fieldset>
                     <legend>User data</legend>
                 </fieldset>
@@ -19,14 +19,34 @@
                         <div>
                             {{ $user->created_at }}
                         </div>
+                        <div class="ml-4 checkbox{{ $errors->has('is_admin') ? ' has-error' : '' }}">
+                            <input type="hidden" name="is_admin" value="0"/>
+                            <input id="is_admin"
+                                name="is_admin"
+                                type="checkbox"
+                                class="custom-control-input"
+                                value="1" {{ ($user->is_admin == 1) ? 'checked' : '' }} />
+                            <label for="is_admin" class="custom-control-label mb-0" for="is_admin">
+                                Is admin account
+                                {!! $errors->first('is_admin', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
+                            </label>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <b>Verified at</b>
                         <div>
-                            @if (empty($user->email_verified_at))
-                                {{-- TODO: <a href="{{ route('dashboard.users.activate-account', $user->id) }}" class="btn btn-primary btn-sm">Activate user</a> --}}
-                            @endif
                             {{ $user->email_verified_at }}
+                            <div class="ml-4 checkbox{{ $errors->has('activated_user') ? ' has-error' : '' }}">
+                                <input type="hidden" name="activated_user" value="0"/>
+                                <input id="activated_user"
+                                    name="activated_user"
+                                    type="checkbox"
+                                    class="custom-control-input"
+                                    value="1" {{ (!empty($user->email_verified_at)) ? 'checked' : '' }} />
+                                <label for="activated_user" class="custom-control-label mb-0" for="activated_user">
+                                    User is active 
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -34,50 +54,30 @@
                         <br />
                         {{ $user->updated_at }}
                     </div>
-                    <div class="col-md-4">
-                        <div class="i-check checkbox{{ $errors->has('is_admin') ? ' has-error' : '' }}">
-                            <label for="is_admin">
-                                <input id="is_admin"
-                                    name="is_admin"
-                                    type="checkbox"
-                                        value="{{ $user->is_admin }}" {{ ($user->is_admin == 1) ? 'checked' : '' }}  />
-                                    Is admin account
-                                {!! $errors->first('is_admin', '<span class="help-block">:message</span>') !!}
-                            </label>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <fieldset>
                     <legend>Personal data</legend>
                 </fieldset>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                             <label>E-mail</label>
                             <div class="input-group">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email', $user->email) }}" required readonly />
+                                <input id="email" type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email', $user->email) }}" required readonly />
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" onclick="unlockInput(this, '#email')" type="button"><span class="oi oi-pencil"></span></button>
                                 </div>
                             </div>
-                            @if (Session::has('email'))
-                                <span class="invalid-feedback d-block" role="alert">
-                                    <strong>{{ Session::get('email') }}</strong>
-                                </span>
-                            @endif
+                            {!! $errors->first('email', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                             <label>Name</label>
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $user->name) }}" />
-                            @if (Session::has('name'))
-                                <span class="invalid-feedback d-block" role="alert">
-                                    <strong>{{ Session::get('name') }}</strong>
-                                </span>
-                            @endif
+                            <input id="name" type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="name" value="{{ old('name', $user->name) }}" />
+                            {!! $errors->first('name', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                         </div>
                     </div>
                 </div>

@@ -17,4 +17,10 @@ $router->group(['prefix' => env('BACKEND_URI'), 'middleware' => ['auth', 'verifi
         'update' => 'dashboard.users.update',
         'destroy' => 'dashboard.users.delete',
     ]);
+    // $router->group(['prefix' => 'users'], function (Router $router) {
+    //     $router->get('/', [
+    //         'uses' => 'UserController@activate',
+    //         'as' => 'dashboard.index'
+    //     ]);
+    // });
 });

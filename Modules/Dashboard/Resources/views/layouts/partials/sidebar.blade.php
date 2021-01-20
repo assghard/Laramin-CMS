@@ -36,11 +36,7 @@
                 <a class="nav-link {{ $errorsTab ?? '' }} {{ ($errorsCount > 0) ? 'text-danger' : '' }}"
                     href="{{-- route('dashboard.system-errors.index') --}}">
                     <span class="oi oi-warning"></span>
-                    @if ($errorsCount > 0)
-                        Błędy systemu ({{ $errorsCount }})
-                    @else
-                        Błędy systemu (0)
-                    @endif
+                    System errors ({{ $errorsCount }})
                 </a>
             </li>
             <li class="nav-item">

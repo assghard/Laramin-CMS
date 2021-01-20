@@ -3,18 +3,26 @@
 @section('title') Users @stop
 
 @section('content')
-    <form action="{{ route('dashboard.users.index') }}" method="get">
-        <div class="input-group mb-3">
-            <input name="email" type="text" class="form-control" placeholder="Find by e-mail" value="{{ Request::get('email') }}">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">
-                    <span class="oi oi-magnifying-glass"></span>
-                </button>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="{{ route('dashboard.users.index') }}" method="get">
+                <div class="input-group mb-2">
+                    <input name="email" type="text" class="form-control" placeholder="Find by e-mail" value="{{ Request::get('email') }}">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            <span class="oi oi-magnifying-glass"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="text-right">
+                <a href="{{ route('dashboard.users.create') }}" class="btn btn-secondary">Create new user</a>
             </div>
         </div>
-    </form>
-
-    <div class="table-responsive">
+    </div>
+    <div class="table-responsive mt-1">
         <table class="table table-striped table-sm table-hover">
             <thead>
                 <tr>
@@ -37,7 +45,7 @@
                         <td>{{ $user->created_at }}</td>
                         <td>{{ $user->email_verified_at }}</td>
                         <td>
-                            <a href="{{ route('dashboard.users.edit', $user->id) }}" class="btn btn-info"><span class="oi oi-pencil"></span></a>
+                            <a href="{{ route('dashboard.users.edit', $user->id) }}" class="btn btn-primary"><span class="oi oi-pencil"></span></a>
                             @if ($user->id != \Auth::user()->id)
                                 <button class="btn btn-danger" onclick="deleteEntity('{{ route('dashboard.users.delete', $user->id) }}', event)"><span class="oi oi-trash"></span></button>
                             @endif

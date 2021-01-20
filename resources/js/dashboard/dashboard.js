@@ -1,7 +1,7 @@
 window.$ = window.jQuery = require('jquery');
 require('bootstrap');
+window.swal = require('sweetalert2');
 
-// window.swal = require('sweetalert2');
 // require("./vendor/tinymce");
 // require("./dashboard/fileUploader");
 // require("./dashboard/categoriesAndTags");
@@ -19,13 +19,13 @@ window.unlockInput = function (button, input_id) {
     $(input_id).removeAttr('readonly').focus();
 }
 
-// window.systemAlert = function (type, message) {
-//     swal.fire({ html: message, icon: type }).then(function () {
-//         location.reload();
-//     }, function () {
-//         location.reload();
-//     });
-// };
+window.systemAlert = function (type, message) {
+    swal.fire({html: message, icon: type}).then(function () {
+        location.reload();
+    }, function () {
+        location.reload();
+    });
+}
 
 // window.btnConfirmation = function (button, event) {
 //     event.preventDefault();
@@ -52,7 +52,7 @@ window.unlockInput = function (button, input_id) {
 window.deleteEntity = function (route, event, returnUrl = null) {
     event.preventDefault();
     swal.fire({
-        text: 'Delete object',
+        text: 'Delete this object',
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#1D5080',
@@ -74,7 +74,7 @@ window.deleteEntity = function (route, event, returnUrl = null) {
                     timeout: ajaxTimeout,
                     success: function (result) {
                         if (result.success === true) {
-                            systemSuccessSweetAlert(function () {
+                            systemAlert('success', 'User has been deleted successfully', function () {
                                 if (!returnUrl) {
                                     location.reload();
                                     return;
@@ -82,14 +82,17 @@ window.deleteEntity = function (route, event, returnUrl = null) {
                                 window.location.href = returnUrl;
                             });
                         } else {
-                            systemErrorSweetAlert();
+                            systemAlert('error', 'ERROR! Something went wrong');
+                            console.log(result);
                         }
                     },
-                    error: function () {
-                        systemErrorSweetAlert();
+                    error: function (err) {
+                        systemAlert('error', 'ERROR! Something went wrong');
+                        console.log(err);
                     }
-                }).fail(function () {
-                    systemErrorSweetAlert();
+                }).fail(function (err) {
+                    systemAlert('error', 'ERROR! Something went wrong');
+                    console.log(err);
                 });
             }
         }

@@ -5,6 +5,8 @@ namespace Modules\Dashboard\Http\Controllers;
 use Illuminate\Routing\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Modules\Dashboard\Http\Requests\UpdateUserRequest;
+use Modules\Dashboard\Http\Requests\CreateUserRequest;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
@@ -20,6 +22,16 @@ class UserController extends Controller
         return view('dashboard::users.index', compact('entities'));
     }
 
+    public function create()
+    {
+        return view('dashboard::users.create');
+    }
+
+    public function store(CreateUserRequest $request)
+    {
+        dd($request->all);
+    }
+
     public function edit($id) 
     {
         $user = User::findOrFail($id);
@@ -27,13 +39,21 @@ class UserController extends Controller
         return view('dashboard::users.edit', compact('user'));
     }
 
-    public function update($id, Request $request) 
+    public function update($id, UpdateUserRequest $request)
     {
         $user = User::findOrFail($id);
         $user->update($request->only(['name', 'email']));
 
         if($user->is_admin != $request->is_admin){
             $user->is_admin = $request->is_admin;
+            $user->save();
+        }
+
+        if($request->activated_user == 1 && empty($user->email_verified_at)){ // user should be activated
+            $user->email_verified_at = now();
+            $user->save();
+        }elseif($request->activated_user == 0 && !empty($user->email_verified_at)){ // user should be deactivated
+            $user->email_verified_at = NULL;
             $user->save();
         }
 
@@ -44,7 +64,7 @@ class UserController extends Controller
         return redirect()->back()->withSuccess('User has been updated');
     }
 
-    public function deleteUser($id)
+    public function destroy($id)
     {
         User::findOrFail($id)->delete($id);
 
@@ -53,21 +73,5 @@ class UserController extends Controller
             'message' => 'Deleted'
         ]);
     }
-
-    // public function activateAccount($id) 
-    // {
-    //     $user = User::findOrFail($id);
-    //     $user->email_verified_at = now();
-    //     $user->save();
-
-    //     try {
-    //         // TODO: mail
-    //     } catch (\Throwable $th) {
-    //         return redirect()->back()->withError('Send email error');
-    //         // System Error entity
-    //     }
-
-    //     return redirect()->back()->withSuccess('User account has been activated successfully');
-    // }
 
 }
