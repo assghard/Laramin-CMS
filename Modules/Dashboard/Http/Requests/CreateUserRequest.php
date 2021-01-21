@@ -15,6 +15,7 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'email' => 'required|email|min:4|max:255|unique:users|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+            'password' => 'required|string|min:8|max:32|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/'
         ];
     }
 
@@ -28,9 +29,9 @@ class CreateUserRequest extends FormRequest
         return true;
     }
 
-        public function messages() {
+    public function messages() {
         return [
-            // 'email.required' => '', // custom messages
+            'password.regex' => 'Password is not strong enough',
         ];
     }
 }

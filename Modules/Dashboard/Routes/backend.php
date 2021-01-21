@@ -9,6 +9,7 @@ $router->group(['prefix' => env('BACKEND_URI'), 'middleware' => ['auth', 'verifi
         'as' => 'dashboard.index'
     ]);
 
+    // User routes
     Route::resource('users', UserController::class)->except(['show'])->names([
         'index' => 'dashboard.users.index',
         'create' => 'dashboard.users.create',
@@ -17,10 +18,19 @@ $router->group(['prefix' => env('BACKEND_URI'), 'middleware' => ['auth', 'verifi
         'update' => 'dashboard.users.update',
         'destroy' => 'dashboard.users.delete',
     ]);
-    // $router->group(['prefix' => 'users'], function (Router $router) {
-    //     $router->get('/', [
-    //         'uses' => 'UserController@activate',
-    //         'as' => 'dashboard.index'
-    //     ]);
-    // });
+
+    $router->group(['prefix' => '/system-errors'], function (Router $router) {
+        $router->get('/', [
+            'uses' => 'DashboardController@systemErrorsIndex',
+            'as' => 'dashboard.system-errors.index'
+        ]);
+        $router->delete('/{id}/delete', [
+            'uses' => 'DashboardController@systemErrorDelete',
+            'as' => 'dashboard.system-errors.delete'
+        ]);
+        $router->delete('/delete-all', [
+            'uses' => 'DashboardController@systemErrorsTruncate',
+            'as' => 'dashboard.system-errors.truncate'
+        ]);
+    });
 });

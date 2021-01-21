@@ -31,7 +31,7 @@ class UserController extends Controller
 
     public function store(CreateUserRequest $request)
     {
-        $user = User::createNewOne($request->email, $request->password);
+        $user = User::createNewOne($request->email, $request->password, $request->name);
 
         return redirect()->route('dashboard.users.edit', $user->id)->withSuccess('User has been created successfully. Now complete rest user data');
     }
@@ -74,7 +74,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Deleted'
+            'message' => 'User has been deleted'
         ]);
     }
 

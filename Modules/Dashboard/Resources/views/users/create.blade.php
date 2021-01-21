@@ -4,7 +4,7 @@
 
 @section('content')
     <a href="{{ route('dashboard.users.index') }}">< Back to user list</a>
-    <form action="{{ route('dashboard.users.store') }}" method="POST">
+    <form action="{{ route('dashboard.users.store') }}" method="POST" autocomplete="false">
         @csrf
         <div class="row">
             <div class="col-md-6">
@@ -23,14 +23,17 @@
                     {!! $errors->first('name', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+                    <label>Password</label>
+                    <input id="password" type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" value="{{ old('password') }}" required autocomplete="new-password" />
+                    {!! $errors->first('password', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
+                </div>
+            </div>
         </div>
 
         <div class="box-footer border-top pt-2 d-block mb-4">
-            <button type="submit" class="btn btn-primary btn-flat" name="button" value="index">
-                <i class="fa fa-angle-left"></i>
-                < Update and back
-            </button>
-            <button type="submit" class="btn btn-primary btn-flat">Update</button>
+            <button type="submit" class="btn btn-primary btn-flat">Submit</button>
             <button class="btn btn-secondary btn-flat" name="button" type="reset">Reset</button>
             <a class="btn btn-danger float-right btn-flat" href="{{ route('dashboard.users.index') }}"><i class="fa fa-times"></i> Close</a>
         </div>

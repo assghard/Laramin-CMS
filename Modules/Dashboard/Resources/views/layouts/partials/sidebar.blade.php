@@ -33,8 +33,7 @@
                 @php
                     $errorsCount = $SystemErrorEntity::count();
                 @endphp
-                <a class="nav-link {{ $errorsTab ?? '' }} {{ ($errorsCount > 0) ? 'text-danger' : '' }}"
-                    href="{{-- route('dashboard.system-errors.index') --}}">
+                <a class="nav-link {{ $errorsTab ?? '' }} {{ ($errorsCount > 0) ? 'text-danger' : '' }}" href="{{ route('dashboard.system-errors.index') }}">
                     <span class="oi oi-warning"></span>
                     System errors ({{ $errorsCount }})
                 </a>

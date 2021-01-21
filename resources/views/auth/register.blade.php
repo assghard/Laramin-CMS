@@ -67,6 +67,17 @@
                             </div>
                         </div>
 
+                        <div>
+                            <h6>Your password:</h6>
+                            <ul>
+                                <li>Should have At least one Uppercase letter</li>
+                                <li>At least one Lower case letter</li>
+                                <li>Also,at least one numeric value</li>
+                                <li>And, at least one special character</li>
+                                <li>Must be more than 8 characters long</li>
+                            </ul>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

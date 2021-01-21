@@ -2,18 +2,14 @@
 
 namespace Modules\Dashboard\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Models\User;
 use Modules\Page\Entities\Page;
+use Modules\Core\Entities\SystemErrorEntity;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
     public function index()
     {
         $usersCount = cache()->remember('users-count', 60*60*12, function () {
@@ -27,63 +23,30 @@ class DashboardController extends Controller
         return view('dashboard::index', compact('usersCount', 'pagesCount'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
+    public function systemErrorsIndex() 
     {
-        return view('dashboard::create');
+        $entities = SystemErrorEntity::orderBy('id', 'DESC')->paginate(10);
+
+        return view('dashboard::system-errors.index', compact('entities'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function systemErrorDelete($id) 
     {
-        //
+        SystemErrorEntity::findOrFail($id)->delete($id);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Entity has been deleted'
+        ]);
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function systemErrorsTruncate() 
     {
-        return view('dashboard::show');
-    }
+        SystemErrorEntity::truncate();
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('dashboard::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json([
+            'success' => true,
+            'message' => 'Table has been truncated'
+        ]);
     }
 }

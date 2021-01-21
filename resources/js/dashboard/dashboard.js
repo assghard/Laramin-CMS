@@ -74,7 +74,7 @@ window.deleteEntity = function (route, event, returnUrl = null) {
                     timeout: ajaxTimeout,
                     success: function (result) {
                         if (result.success === true) {
-                            systemAlert('success', 'User has been deleted successfully', function () {
+                            systemAlert('success', result.message, function () {
                                 if (!returnUrl) {
                                     location.reload();
                                     return;
