@@ -74,9 +74,9 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                             <label>Name</label>
-                            <input id="name" type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="name" value="{{ old('name', $user->name) }}" />
+                            <input id="name" type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ old('name', $user->name) }}" />
                             {!! $errors->first('name', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                         </div>
                     </div>
@@ -88,6 +88,8 @@
         <fieldset>
             <legend>Company data</legend>
         </fieldset> --}}
+
+        {{-- TODO: change user password --}}
 
         <div class="box-footer border-top pt-2 d-block mb-4">
             <button type="submit" class="btn btn-primary btn-flat" name="button" value="index">

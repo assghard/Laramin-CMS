@@ -13,10 +13,12 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        if(empty($request->email)){
+        $filterData = array_filter($request->all());
+        unset($filterData['page']);
+        if(empty($filterData)){
             $entities = User::orderBy('id', 'DESC')->paginate(100);
         }else{
-            $entities = User::where('email', $request->email)->orderBy('id', 'DESC')->paginate(100);
+            $entities = User::where($filterData)->orderBy('id', 'DESC')->paginate(100);
         }
 
         return view('dashboard::users.index', compact('entities'));
@@ -29,7 +31,9 @@ class UserController extends Controller
 
     public function store(CreateUserRequest $request)
     {
-        dd($request->all);
+        $user = User::createNewOne($request->email, $request->password);
+
+        return redirect()->route('dashboard.users.edit', $user->id)->withSuccess('User has been created successfully. Now complete rest user data');
     }
 
     public function edit($id) 

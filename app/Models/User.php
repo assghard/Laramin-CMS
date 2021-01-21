@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -44,7 +45,32 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /*
+     * Mutators
+     */
     public function setIsAdminAttribute($value) {
         $this->attributes['is_admin'] = ($value == 1) ? 1 : 0;
+    }
+    /*
+     * END Mutators
+     */
+
+    /**
+     * Create new user method. Use it after validation
+     * 
+     * @param $email user unique email
+     * @param $password pure password string
+     * @param $name user name
+     * 
+     * @return User
+     */
+    public static function createNewOne($email, $password, $name = NULL) 
+    {
+        return User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($password),
+            'api_token' => Str::random(60) // for auth:api middleware
+        ]);
     }
 }

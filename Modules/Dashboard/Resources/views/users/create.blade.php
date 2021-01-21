@@ -17,9 +17,9 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                     <label>Name</label>
-                    <input id="name" type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="name" value="{{ old('name') }}" />
+                    <input id="name" type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ old('name') }}" />
                     {!! $errors->first('name', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                 </div>
             </div>

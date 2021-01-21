@@ -1,6 +1,6 @@
 @extends('dashboard::layouts.master', ['usersTab' => 'active'])
 
-@section('title') Users @stop
+@section('title') Users ({{ $entities->total() }}) @stop
 
 @section('content')
     <div class="row">
@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-6">
             <div class="text-right">
-                <a href="{{ route('dashboard.users.create') }}" class="btn btn-secondary">Create new user</a>
+                <a href="{{ route('dashboard.users.create') }}" class="btn btn-secondary">Create new user <span class="oi oi-person"></span></a>
             </div>
         </div>
     </div>
@@ -57,6 +57,6 @@
     </div>
 
     <div class="pagination-box">
-        {!! $entities->appends(Request::query())->links() !!}
+        {!! $entities->appends(Request::query())->links('pagination::bootstrap-4') !!}
     </div>
 @endsection
