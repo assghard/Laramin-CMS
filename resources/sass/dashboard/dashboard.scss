@@ -24,6 +24,13 @@ body {
 		font-weight: bold;
 	}
 }
+input{
+	border-radius: 0 !important;
+	&:focus{
+		box-shadow: none !important;
+		border-color: $blue !important;
+	}
+}
 
 /*
  * Sidebar
