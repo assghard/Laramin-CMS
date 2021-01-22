@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                            <label>E-mail</label>
+                            <label>E-mail *</label>
                             <div class="input-group">
                                 <input id="email" type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email', $user->email) }}" required readonly />
                                 <div class="input-group-append">
@@ -80,6 +80,25 @@
                             {!! $errors->first('name', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+                            <label>Password</label>
+                            <input id="password" type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" value="" />
+                            {!! $errors->first('password', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+                            <label>Password confirmation</label>
+                            <input id="password_confirmation" type="password" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" name="password_confirmation" value="" />
+                            {!! $errors->first('password_confirmation', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <i>
+                        At least: one Uppercase letter, one Lower case letter, one numeric value, one special character, must be more than 8 characters long
+                    </i>
                 </div>
             </div>
         </div>
@@ -88,8 +107,6 @@
         <fieldset>
             <legend>Company data</legend>
         </fieldset> --}}
-
-        {{-- TODO: change user password --}}
 
         <div class="box-footer border-top pt-2 d-block mb-4">
             <button type="submit" class="btn btn-primary btn-flat" name="button" value="index">

@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC', // TODO: from config table + seeder
+    'timezone' => 'UTC', // TODO: from settings + seeder
 
     /*
     |--------------------------------------------------------------------------

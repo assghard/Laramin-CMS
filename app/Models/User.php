@@ -69,8 +69,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return User::create([
             'name' => $name,
             'email' => $email,
-            'password' => Hash::make($password),
+            'password' => self::makePassword($password),
             'api_token' => Str::random(60) // for auth:api middleware
         ]);
+    }
+
+    public static function makePassword($password) 
+    {
+        return Hash::make($password);
     }
 }

@@ -50,16 +50,24 @@ class UserController extends Controller
 
         if($user->is_admin != $request->is_admin){
             $user->is_admin = $request->is_admin;
-            $user->save();
         }
 
         if($request->activated_user == 1 && empty($user->email_verified_at)){ // user should be activated
             $user->email_verified_at = now();
-            $user->save();
         }elseif($request->activated_user == 0 && !empty($user->email_verified_at)){ // user should be deactivated
             $user->email_verified_at = NULL;
-            $user->save();
         }
+
+        if(!empty($request->password)){
+            $validation = $request->validatePassword();
+            if ($validation->fails()) {
+                return redirect()->back()->withErrors($validation->messages())->withInput();
+            }
+
+            $user->password = User::makePassword($request->password);
+        }
+
+        $user->save();
 
         if(isset($request->button) && $request->button == 'index'){
             return redirect()->route('dashboard.users.index')->withSuccess('User has been updated');
