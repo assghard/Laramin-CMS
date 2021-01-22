@@ -23,7 +23,7 @@
         <hr />
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link {{ $settingsTab ?? '' }}" href="{{-- route('dashboard.settings.index') --}}">
+                <a class="nav-link {{ $settingsTab ?? '' }}" href="{{ route('dashboard.settings.index') }}">
                     <span class="oi oi-wrench"></span>
                     System settings
                 </a>

@@ -92,3 +92,5 @@ TODO: media module (globally)
 
 TODO: TEST add mail config and test send mail
 TODO: TEST auth and send mails, reset, register...
+
+TODO: check all config files in config folder

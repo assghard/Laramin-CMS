@@ -12,11 +12,7 @@
         @include('layouts.partials.fav')
         <title>@section('title')@show | System Dashboard | {{ env('APP_NAME') }}</title>
 
-        @if (env('APP_ENV') == 'production')
-            <link rel="stylesheet" href="{{ url('/css/dashboard.css') }}" />
-        @else
-            <link rel="stylesheet" href="{{ mix('/css/dashboard.css') }}" />
-        @endif
+        <link rel="stylesheet" href="{{ mix('/css/dashboard.css') }}" />
         @stack('styles')
 
         <script>
@@ -34,17 +30,13 @@
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-0 mb-2 border-bottom">
                         <h1 class="h3">@section('title')@show</h1>
                     </div>
-                    {{-- @include('dashboard::settings.technical-break-alert') --}}
+                    @include('dashboard::settings.technical-break-alert')
                     @yield('content')
                 </main>
             </div>
         </div>
 
-        @if (env('APP_ENV') == 'production')
             <script src="{{ mix('/js/dashboard.js') }}"></script>
-        @else
-            <script src="{{ url('/js/dashboard.js') }}"></script>
-        @endif
         @stack('scripts')
     </body>
 </html>

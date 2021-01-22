@@ -33,4 +33,24 @@ $router->group(['prefix' => env('BACKEND_URI'), 'middleware' => ['auth', 'verifi
             'as' => 'dashboard.system-errors.truncate'
         ]);
     });
+
+
+    Route::resource('settings', SettingsController::class)->except(['show'])->names([
+        'index' => 'dashboard.settings.index',
+        'create' => 'dashboard.settings.create',
+        'store' => 'dashboard.settings.store',
+        'edit' => 'dashboard.settings.edit',
+        'update' => 'dashboard.settings.update',
+        'destroy' => 'dashboard.settings.delete',
+    ]);
+    $router->group(['prefix' => '/settings'], function (Router $router) {
+        $router->get('/technical-break/{action}', [
+            'uses' => 'SettingsController@technicalBreak',
+            'as' => 'dashboard.settings.technical-break'
+        ]);
+        $router->post('/ip-addresses-update', [
+            'uses' => 'SettingsController@ipAddressesUpdate',
+            'as' => 'dashboard.settings.ip-addresses-update'
+        ]);
+    });
 });

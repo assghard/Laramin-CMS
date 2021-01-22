@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Modules\Dashboard\Http\Requests\UpdateUserRequest;
 use Modules\Dashboard\Http\Requests\CreateUserRequest;
-use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
