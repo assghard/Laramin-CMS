@@ -24,7 +24,8 @@ body {
 		font-weight: bold;
 	}
 }
-input{
+input,
+textarea{
 	border-radius: 0 !important;
 	&:focus{
 		box-shadow: none !important;

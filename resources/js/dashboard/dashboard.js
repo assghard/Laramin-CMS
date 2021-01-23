@@ -82,7 +82,7 @@ window.deleteEntity = function (route, event, returnUrl = null) {
                                 window.location.href = returnUrl;
                             });
                         } else {
-                            systemAlert('error', 'ERROR! Something went wrong');
+                            systemAlert('error', result.message);
                             console.log(result);
                         }
                     },

@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ $pagesTab ?? '' }}" href="{{-- route('dashboard.page.index') --}}">
+                <a class="nav-link {{ $pagesTab ?? '' }}" href="{{ route('dashboard.pages.index') }}">
                     <span class="oi oi-document"></span>
                     Pages
                 </a>

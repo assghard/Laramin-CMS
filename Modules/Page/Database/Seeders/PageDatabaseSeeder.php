@@ -28,7 +28,8 @@ class PageDatabaseSeeder extends Seeder
             'og_title' => 'CMS based on Laravel for quick create a simple website',
             'og_description' => 'Every website needs homepage, subpages, contact page, SEO base features, content manager',
             'og_type' => 'website',
-            'og_image' => NULL
+            'og_image' => NULL,
+            'created_at' => now()
         ]);
 
         \DB::table('page__pages')->insert([
@@ -43,7 +44,8 @@ class PageDatabaseSeeder extends Seeder
             'og_title' => NULL,
             'og_description' => NULL,
             'og_type' => 'website',
-            'og_image' => NULL
+            'og_image' => NULL,
+            'created_at' => now()
         ]);
     }
 }

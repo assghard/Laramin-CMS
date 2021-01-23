@@ -34,7 +34,7 @@ $router->group(['prefix' => env('BACKEND_URI'), 'middleware' => ['auth', 'verifi
         ]);
     });
 
-
+    // Setting routes
     Route::resource('settings', SettingsController::class)->except(['show'])->names([
         'index' => 'dashboard.settings.index',
         'create' => 'dashboard.settings.create',

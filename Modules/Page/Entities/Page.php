@@ -4,6 +4,7 @@ namespace Modules\Page\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Page\Scopes\PageScope;
+use Illuminate\Support\Str;
 
 class Page extends Model
 {
@@ -50,5 +51,11 @@ class Page extends Model
     public static function findBySlug($slug) 
     {
         return self::where('slug', $slug)->where('is_homepage', 0)->first();
+    }
+
+    public static function createSlug($value) 
+    {
+        return Str::slug($value, '-');
+        // TODO: make slug unique if it doesn't
     }
 }
