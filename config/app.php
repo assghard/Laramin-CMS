@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'), // TODO: from settings
+    'name' => env('APP_NAME', 'atCMS'), // TODO: from settings
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC', // TODO: from settings
+    
+    'timezone' => env('APP_TIMEZONE', 'UTC'), // TODO: from settings
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +81,7 @@ return [
     |
     */
 
-    'locale' => 'en', // TODO: from settings
+    'locale' => env('APP_LOCALE', 'en'), // TODO: from settings
 
     /*
     |--------------------------------------------------------------------------

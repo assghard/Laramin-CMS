@@ -5,7 +5,6 @@ namespace Modules\Dashboard\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Dashboard\Entities\Setting;
-use Illuminate\Support\Facades\File;
 
 class SettingsController extends Controller
 {
@@ -13,20 +12,11 @@ class SettingsController extends Controller
     {
         $entities = Setting::paginate(100);
         $techBreakConfig = technical_break_config();
+        $ipAddress = (array_key_exists('REMOTE_ADDR', $_SERVER)) ? $_SERVER['REMOTE_ADDR'] : NULL;
 
         // TODO: add settings seeder with basic settings
 
-
-        // $config = \Config::get('app');
-        // $config['name'] = 'TEST v2';
-
-        // $data = var_export($config, 1);
-        // dd($data);
-
-        // $eee = File::get(base_path('config/app.php'));
-        // dd($eee);
-
-        return view('dashboard::settings.index', compact('entities', 'techBreakConfig'));
+        return view('dashboard::settings.index', compact('entities', 'techBreakConfig', 'ipAddress'));
     }
 
     public function create()
