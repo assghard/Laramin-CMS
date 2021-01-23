@@ -20,11 +20,7 @@
 @stop
 
 @push('style')
-    @if (env('APP_ENV') == 'production')
-        <link rel="stylesheet" href="{{ url('/css/subpage-stack.css') }}"/>
-    @else
-        <link rel="stylesheet" href="{{ mix('/css/subpage-stack.css') }}"/>
-    @endif
+    <link rel="stylesheet" href="{{ mix('/css/subpage-stack.css') }}" />
 @endpush
 
 @section('content')
@@ -43,9 +39,5 @@
 @stop
 
 @push('scripts')
-    @if (env('APP_ENV') == 'production')
-        <script src="{{ url('/js/subpage-stack.js') }}"></script>
-    @else
-        <script src="{{ mix('/js/subpage-stack.js') }}"></script> 
-    @endif
+    <script src="{{ mix('/js/subpage-stack.js') }}"></script>
 @endpush

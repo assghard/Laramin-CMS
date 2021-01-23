@@ -84,9 +84,6 @@ php artisan migrate
 
 
 ================================
-
-TODO: dashboard template + routes + resource controller (CRUD) + global js methods
-TODO: dashboard settings module
 TODO: page dashboard CRUD
 TODO: media module (globally)
 

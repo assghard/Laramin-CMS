@@ -5,8 +5,9 @@
 @section('content')
     <a href="{{ route('dashboard.settings.index') }}">< Back to settings list</a>
 
-    <form action="{{ route('dashboard.settings.update', $entity->id) }}" method="post">
+    <form action="{{ route('dashboard.settings.update', $entity->id) }}" method="POST">
         @csrf
+        {{ method_field('PUT') }}
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">

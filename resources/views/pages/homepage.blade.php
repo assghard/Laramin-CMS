@@ -29,11 +29,7 @@
 @stop
 
 @push('style')
-    @if (env('APP_ENV') == 'production')
-        <link rel="stylesheet" href="{{ url('/css/homepage-stack.css') }}"/>
-    @else
-        <link rel="stylesheet" href="{{ mix('/css/homepage-stack.css') }}"/>
-    @endif
+    <link rel="stylesheet" href="{{ mix('/css/homepage-stack.css') }}" />
 @endpush
 
 @section('content')
@@ -47,9 +43,5 @@
 @stop
 
 @push('scripts')
-    @if (env('APP_ENV') == 'production')
-        <script src="{{ url('/js/homepage-stack.js') }}"></script>  
-    @else
-        <script src="{{ mix('/js/homepage-stack.js') }}"></script>  
-    @endif
+    <script src="{{ mix('/js/homepage-stack.js') }}"></script>
 @endpush

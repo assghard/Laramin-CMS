@@ -25,6 +25,36 @@
             </form>
         </div>
     </div>
+    <hr />
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <b class="h5">config/app.php</b>
+                    <div>
+                        App name: <b>{{ config('app.name') }}</b>
+                    </div>
+                    <div>
+                        App timezone: <b>{{ config('app.timezone') }}</b>
+                    </div>
+                    <div>
+                        App locale: <b>{{ config('app.locale') }}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <b class="h5">config/session.php</b>
+                    <div>
+                        Session encrypt: <b>{{ config('session.encrypt') }}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <hr />
     <div class="text-right mb-2">

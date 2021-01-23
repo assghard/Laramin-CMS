@@ -7,7 +7,7 @@
         <div class="panel-body p-0">
             <div class="alert alert-danger h6 m-0">
                 <b>
-                    WARNING! The system debugger is turned ON
+                    WARNING! The system debugger (.env) is turned ON
                 </b>
             </div>
         </div>

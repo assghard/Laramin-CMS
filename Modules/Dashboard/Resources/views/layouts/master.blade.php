@@ -36,7 +36,7 @@
             </div>
         </div>
 
-            <script src="{{ mix('/js/dashboard.js') }}"></script>
+        <script src="{{ mix('/js/dashboard.js') }}"></script>
         @stack('scripts')
     </body>
 </html>
