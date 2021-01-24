@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactRequestsTable extends Migration
+class CreateUserSubmissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateContactRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('page__contact_requests', function (Blueprint $table) {
+        Schema::create('dashboard__user_submissions', function (Blueprint $table) {
             $table->id();
 
             $table->string('email');
@@ -30,6 +30,6 @@ class CreateContactRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page__contact_requests');
+        Schema::dropIfExists('dashboard__user_submissions');
     }
 }

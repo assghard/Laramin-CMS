@@ -5,9 +5,9 @@ namespace Modules\Page\Http\Controllers;
 use Illuminate\Routing\Controller;
 use Modules\Page\Entities\Page;
 use Modules\Page\Http\Requests\SendContactFormRequest;
-use Modules\Page\Entities\ContactRequest;
 use Illuminate\Support\Facades\Mail;
 use Modules\Page\Mails\ContactRequestEmail;
+use Modules\Dashboard\Entities\UserSubmission;
 use Modules\Core\Entities\SystemErrorEntity;
 
 class PublicController extends Controller
@@ -26,23 +26,22 @@ class PublicController extends Controller
 
     public function sendContact(SendContactFormRequest $request) 
     {
-        try {
-            ContactRequest::create($request->only(['email', 'description']));
-            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactRequestEmail($request->email, $request->description));
+        UserSubmission::create($request->only(['email', 'description']));
 
-            return redirect()->back()->withSuccess('Your request has been sent successfully');
+        try {
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactRequestEmail($request->email, $request->description));
         } catch (\Throwable $th) {
             SystemErrorEntity::createEntity('Page, PublicController sendContact ERROR', [
                 'message' => $th->getMessage()
             ]);
-
-            return redirect()->back()->with('Send request ERROR! Try again');
         }
+
+        return redirect()->back()->withSuccess('Your request has been sent successfully');
     }
 
     public function subpage($slug) 
     {
-        $page = Page::findBySlug($slug);
+        $page = Page::findSubpageBySlug($slug);
         if(empty($page)){
             abort(404);
         }

@@ -39,6 +39,16 @@
                 </a>
             </li>
             <li class="nav-item">
+                @inject('UserSubmissionEntity', '\Modules\Dashboard\Entities\UserSubmission')
+                @php
+                    $userSubmissions = $UserSubmissionEntity::count();
+                @endphp
+                <a class="nav-link {{ $submissionsTab ?? '' }} {{ ($userSubmissions > 0) ? 'text-info' : '' }}" href="{{ route('dashboard.user-submissions.index') }}">
+                    <span class="oi oi-list"></span>
+                    User submissions ({{ $userSubmissions }})
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <span class="oi oi-account-logout"></span> Logout
                 </a>

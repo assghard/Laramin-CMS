@@ -53,4 +53,9 @@ $router->group(['prefix' => env('BACKEND_URI'), 'middleware' => ['auth', 'verifi
             'as' => 'dashboard.settings.ip-addresses-update'
         ]);
     });
+
+    Route::resource('user-submissions', UserSubmissionsController::class)->only(['index', 'destroy'])->names([
+        'index' => 'dashboard.user-submissions.index',
+        'destroy' => 'dashboard.user-submissions.delete',
+    ]);
 });

@@ -4,7 +4,6 @@ namespace Modules\Page\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Page\Scopes\PageScope;
-use Illuminate\Support\Str;
 
 class Page extends Model
 {
@@ -35,7 +34,7 @@ class Page extends Model
         parent::boot();
 
         try {
-            if (strpos(request()->getPathInfo(), env('BACKEND_URI'))) {
+            if (strpos(request()->url(), env('BACKEND_URI'))) {
                 return;
             }
         } catch (\Throwable $th) {}
@@ -48,14 +47,14 @@ class Page extends Model
         return self::where('is_homepage', 1)->firstOrFail();
     }
 
-    public static function findBySlug($slug) 
+    public static function findSubpageBySlug($slug) 
     {
         return self::where('slug', $slug)->where('is_homepage', 0)->first();
     }
 
-    public static function createSlug($value) 
+    public static function findBySlug($slug) 
     {
-        return Str::slug($value, '-');
-        // TODO: make slug unique if it doesn't
+        return self::where('slug', $slug)->first();
     }
+
 }

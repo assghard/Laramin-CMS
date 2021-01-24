@@ -13,15 +13,15 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-                            <label>Title</label>
-                            <input id="title" type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title', $page->title) }}" />
+                            <label>Title *</label>
+                            <input id="title" type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title', $page->title) }}" required />
                             {!! $errors->first('title', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
                             <label>Slug</label>
-                            <input id="slug" type="text" class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" name="slug" value="{{ old('slug', $page->slug) }}" readonly />
+                            <input id="slug" type="text" class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" name="slug" value="{{ old('slug', $page->slug) }}" />
                             {!! $errors->first('slug', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                         </div>
                     </div>

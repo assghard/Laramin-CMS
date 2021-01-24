@@ -21,12 +21,11 @@ class SendContactFormRequest extends FormRequest
 
     public function messages() {
         return [
-            'email.required' => 'Field is required',
-            'email.email' => 'Field format is bad',
-            'email.regex' => 'Field format is invalid',
-
-            'description.required' => 'Field is required',
-            'description.min' => "It's not enought",
+            // 'email.required' => 'Field is required',
+            // 'email.email' => 'Field format is bad',
+            // 'email.regex' => 'Field format is invalid',
+            // 'description.required' => 'Field is required',
+            // 'description.min' => "It's not enought",
         ];
     }
 

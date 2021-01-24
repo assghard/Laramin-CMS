@@ -11,15 +11,15 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-                            <label>Title</label>
-                            <input id="title" type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" />
+                            <label>Title *</label>
+                            <input id="title" type="text" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" value="{{ old('title') }}" required />
                             {!! $errors->first('title', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
                             <label>Slug</label>
-                            <input id="slug" type="text" class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" name="slug" value="{{ old('slug') }}" readonly />
+                            <input id="slug" type="text" class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" name="slug" value="{{ old('slug') }}" />
                             {!! $errors->first('slug', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                         name="is_homepage"
                         type="checkbox"
                         class="custom-control-input"
-                        value="1" {{-- ($page->is_homepage==1)?'checked':'' --}} />
+                        value="1" />
                     <label for="is_homepage" class="custom-control-label mb-0" for="is_homepage">
                         Is homepage
                         {!! $errors->first('is_homepage', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}

@@ -5,6 +5,9 @@ namespace Modules\Page\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Page\Entities\Page;
+use Modules\Page\Http\Requests\CreatePageRequest;
+use Modules\Page\Http\Requests\UpdatePageRequest;
+use Modules\Page\Services\PageService;
 
 class PageController extends Controller
 {
@@ -20,14 +23,9 @@ class PageController extends Controller
         return view('page::create');
     }
 
-    public function store(Request $request)
+    public function store(CreatePageRequest $request, PageService $pageService)
     {
-        try {
-            // TODO: check if homepage is single in DB
-            Page::create(array_merge($request->all(), ['slug' => Page::createSlug($request->title)]));
-        } catch (\Throwable $th) {
-            return redirect()->back()->withError($th->getMessage());
-        }
+        $pageService->createPage($request->all());
 
         return redirect()->route('dashboard.pages.index')->withSuccess('Page has been created');
     }
@@ -39,11 +37,9 @@ class PageController extends Controller
         return view('page::edit', compact('page'));
     }
 
-    public function update(Request $request, $id)
+    public function update($id, UpdatePageRequest $request, PageService $pageService)
     {
-        // TODO: check if homepage is single in DB
-        $page = Page::findOrFail($id);
-        $page->update($request->all());
+        $pageService->updatePage($id, $request->all());
 
         if (isset($request->button) && $request->button == 'index') {
             return redirect()->route('dashboard.pages.index')->withSuccess('Page has been updated');

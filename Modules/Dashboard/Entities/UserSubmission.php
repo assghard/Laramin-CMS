@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Page\Entities;
+namespace Modules\Dashboard\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContactRequest extends Model
+class UserSubmission extends Model
 {
-    protected $table = 'page__contact_requests';
+    protected $table = 'dashboard__user_submissions';
     protected $fillable = [
         'email',
         'description'
