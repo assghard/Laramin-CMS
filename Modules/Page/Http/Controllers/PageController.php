@@ -25,22 +25,24 @@ class PageController extends Controller
 
     public function store(CreatePageRequest $request, PageService $pageService)
     {
-        $pageService->createPage($request->all());
+        $page = $pageService->createPage($request);
 
-        return redirect()->route('dashboard.pages.index')->withSuccess('Page has been created');
+        return redirect()->route('dashboard.pages.edit', $page->id)->withSuccess('Page has been created');
     }
 
     public function edit($id)
     {
-        $page = Page::findOrFail($id);
+        $page = Page::with(['media'])->findOrFail($id);
+
+        // $page->clearMediaCollection('gallery');
 
         return view('page::edit', compact('page'));
     }
 
     public function update($id, UpdatePageRequest $request, PageService $pageService)
     {
-        $pageService->updatePage($id, $request->all());
-
+        $page = $pageService->updatePage($id, $request);
+        
         if (isset($request->button) && $request->button == 'index') {
             return redirect()->route('dashboard.pages.index')->withSuccess('Page has been updated');
         }

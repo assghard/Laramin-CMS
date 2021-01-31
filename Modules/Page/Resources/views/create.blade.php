@@ -122,9 +122,6 @@
                         {!! $errors->first('is_active', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                     </label>
                 </div>
-
-                <hr />
-                <h6>Gallery</h6>
             </div>
         </div>
 

@@ -4,10 +4,9 @@
 
 @section('content')
     <a href="{{ route('dashboard.pages.index') }}">< Back to list</a>
-    <form action="{{ route('dashboard.pages.update', $page->id) }}" method="POST">
+    <form action="{{ route('dashboard.pages.update', $page->id) }}" method="POST" enctype='multipart/form-data'>
         @csrf
         {{ method_field('PUT') }}
-
         <div class="row">
             <div class="col-md-7">
                 <div class="row">
@@ -38,14 +37,10 @@
                 </div>
 
                 <hr />
-                <div id="accordion">
+                <div id="accordion" class="system-accordion">
                     <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <div class="btn btn-link" data-toggle="collapse" data-target="#meta-data" aria-expanded="false" aria-controls="meta-data">
-                                    Meta data
-                                </div>
-                            </h5>
+                        <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#meta-data" aria-expanded="false" aria-controls="meta-data">
+                            <h5 class="mb-0">Meta data</h5>
                         </div>
                         <div id="meta-data" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
@@ -66,12 +61,8 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <div class="btn btn-link collapsed" data-toggle="collapse" data-target="#og-data" aria-expanded="false" aria-controls="og-data">
-                                    Open graph data
-                                </div>
-                            </h5>
+                        <div class="card-header collapsed" id="headingTwo"data-toggle="collapse" data-target="#og-data" aria-expanded="false" aria-controls="og-data">
+                            <h5 class="mb-0">Open graph data</h5>
                         </div>
                         <div id="og-data" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
@@ -123,13 +114,47 @@
                         {!! $errors->first('is_active', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                     </label>
                 </div>
-
                 <hr />
-                <h6>Gallery</h6>
+                <h4>Media</h4>
+                <div class="alert alert-info">
+                    Registered media collections for this model: <b>{{ $page->getRegisteredMediaCollections()->implode('name', ', ') }}</b>
+                </div>
+
+                <h5>Main image (x1)</h5>
+                <div>
+                    @include('media::inputs.single', ['name' => 'main'])
+                    @if (!empty($page->getMainImage()))
+                        @include('media::partials.image-box', ['image' => $page->getMainImage()])
+                    @endif
+                </div>
             </div>
         </div>
+        <hr class="mt-3" />
+        <h5>Gallery</h5>
+        @include('media::inputs.multiple', ['name' => 'gallery'])
 
-        <div class="box-footer border-top pt-2 d-block mb-4">
+        @if (!$page->getMedia('gallery')->isEmpty())
+            <div id="gallery-accordion" class="system-accordion">
+                <div class="card">
+                    <div class="card-header" id="headingGallery" data-toggle="collapse" data-target="#gallery-images" aria-expanded="false" aria-controls="gallery-images">
+                        <h5 class="mb-0">Assigned media</h5>
+                    </div>
+                    <div id="gallery-images" class="collapse" aria-labelledby="headingGallery" data-parent="#gallery-accordion">
+                        <div class="card-body">
+                            <div class="row">
+                                @foreach ($page->getMedia('gallery') as $image)
+                                    <div class="col-md-4">
+                                        @include('media::partials.image-box', ['image' => $image])
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        <div class="box-footer border-top pt-2 d-block my-4">
             <button type="submit" class="btn btn-primary btn-flat" name="button" value="index">
                 <i class="fa fa-angle-left"></i>
                 < Update and back

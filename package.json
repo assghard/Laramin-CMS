@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "open-iconic": "^1.1.1",
-        "sweetalert2": "^10.13.0"
+        "sweetalert2": "^10.13.0",
+        "vue": "^2.6.12"
     }
 }

@@ -1,3 +1,4 @@
+// window.Vue = require('vue');
 window.$ = window.jQuery = require('jquery');
 require('bootstrap');
 window.swal = require('sweetalert2');
@@ -11,6 +12,11 @@ $(function () {
         headers: {
             "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").getAttribute("content")
         }
+    });
+
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 });
 
@@ -97,6 +103,39 @@ window.deleteEntity = function (route, event, returnUrl = null) {
             }
         }
     }).catch(swal.noop);
+}
+
+window.saveImageData = function(button, event){
+    event.preventDefault();
+    var imageBox = $(button).parent('.image-box');
+    var route = $(button).data('route');
+
+    var imageData = {};
+    $(imageBox).find('input').each(function(iterator, element){
+        imageData[$(element).data('name')] = element.value;
+    });
+
+    $.ajax({
+        url: route,
+        type: 'PUT',
+        data: imageData,
+        timeout: ajaxTimeout,
+        success: function (result) {
+            if (result.success === true) {
+                swal.fire({ html: result.message, icon: 'success', timer: 3000, timerProgressBar: true });
+            } else {
+                systemAlert('error', result.message);
+                console.log(result);
+            }
+        },
+        error: function (err) {
+            systemAlert('error', 'ERROR! Something went wrong');
+            console.log(err);
+        }
+    }).fail(function (err) {
+        systemAlert('error', 'ERROR! Something went wrong');
+        console.log(err);
+    });
 }
 
 // const app = new Vue({

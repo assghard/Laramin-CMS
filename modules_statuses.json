@@ -2,5 +2,6 @@
     "Core": true,
     "Page": true,
     "Blog": true,
-    "Dashboard": true
+    "Dashboard": true,
+    "Media": true
 }

@@ -70,24 +70,17 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 =====================================================================================
 
-Git clone
-
-cp .env.example .env
-
-composer install
-
-npm install
-
-npm run dev
-
-php artisan migrate
+* Git clone
+* cp .env.example .env
+* composer install
+* npm install
+* npm run dev
+* php artisan migrate --seed
 
 
-================================
-TODO: page dashboard CRUD
-TODO: media module (globally)
-
-TODO: TEST add mail config and test send mail
-TODO: TEST auth and send mails, reset, register...
-
-TODO: check all config files in config folder
+## TODO
+* TEST add mail config and test send mail
+* TEST auth and send mails, reset, register...
+* check all config files in config folder
+* check/add media allowed extensions
+* Add lian-yue/vue-upload-component

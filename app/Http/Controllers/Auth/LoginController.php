@@ -26,7 +26,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo()
+    {
+        return !empty(session('url.intended')) ? session('url.intended') : RouteServiceProvider::HOME;
+    }
 
     /**
      * Create a new controller instance.

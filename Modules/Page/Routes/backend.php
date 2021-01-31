@@ -12,4 +12,6 @@ $router->group(['prefix' => env('BACKEND_URI'), 'middleware' => ['auth', 'verifi
         'update' => 'dashboard.pages.update',
         'destroy' => 'dashboard.pages.delete',
     ]);
+    $router->group(['prefix' => '/pages'], function (Router $router) {
+    });
 });

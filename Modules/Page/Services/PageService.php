@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Page\Services;
 
 use Modules\Page\Entities\Page;
@@ -7,29 +9,41 @@ use Illuminate\Support\Str;
 
 class PageService 
 {
-    public function createPage($data) 
+    public function createPage($request) : Page
     {
-        if ($data['is_homepage'] == 1) {
+        if ($request->is_homepage == 1) {
             Page::where('is_homepage', 1)->update(['is_homepage' => 0]);
         }
 
-        Page::create(array_merge($data, ['slug' => (empty($data['slug'])) ? $this->createSlug($data['title']) : $this->createSlug($data['slug'])]));
+        return Page::create(array_merge($request->all(), ['slug' => (empty($request->slug)) ? $this->createSlug($request->title) : $this->createSlug($request->slug)]));
     }
 
-    public function updatePage($id, $data) 
+    public function updatePage($id, $request) : Page
     {
         $page = Page::findOrFail($id);
-        if ($data['is_homepage'] == 1 && $page->is_homepage != 1) {
+        if ($request->is_homepage == 1 && $page->is_homepage != 1) {
             Page::where('is_homepage', 1)->update(['is_homepage' => 0]);
         }
 
-        $page->update(array_merge($data, ['slug' => (empty($data['slug'])) ? $this->createSlug($data['title'], $id) : $this->createSlug($data['slug'], $id)]));
+        $page->update(array_merge($request->all(), ['slug' => (empty($request->slug)) ? $this->createSlug($request->title, $id) : $this->createSlug($request->slug, $id)]));
+
+        if ($request->hasFile('main')) {
+            $page->addMedia($request->file('main'))->toMediaCollection('main');
+        }
+
+        if ($request->hasFile('gallery')) {
+            foreach ($request->gallery as $image) {
+                $page->addMedia($image)->toMediaCollection('gallery');
+            }
+        }
+
+        return $page;
     }
 
     /**
      * Cretate unique slug
      */
-    public function createSlug($title, $pageId = NULL)
+    public function createSlug($title, $pageId = NULL) : string
     {
         $slug = mb_strtolower(Str::slug($title, '-'));
         $page = Page::findBySlug($slug);
