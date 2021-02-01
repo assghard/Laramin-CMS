@@ -2,10 +2,7 @@
 window.$ = window.jQuery = require('jquery');
 require('bootstrap');
 window.swal = require('sweetalert2');
-
-// require("./vendor/tinymce");
-// require("./dashboard/fileUploader");
-// require("./dashboard/categoriesAndTags");
+window.lightbox = require("lightbox2");
 
 $(function () {
     $.ajaxSetup({
@@ -122,7 +119,35 @@ window.saveImageData = function(button, event){
         timeout: ajaxTimeout,
         success: function (result) {
             if (result.success === true) {
-                swal.fire({ html: result.message, icon: 'success', timer: 3000, timerProgressBar: true });
+                swal.fire({ html: result.message, icon: 'success', timer: 2000, timerProgressBar: true });
+            } else {
+                systemAlert('error', result.message);
+                console.log(result);
+            }
+        },
+        error: function (err) {
+            systemAlert('error', 'ERROR! Something went wrong');
+            console.log(err);
+        }
+    }).fail(function (err) {
+        systemAlert('error', 'ERROR! Something went wrong');
+        console.log(err);
+    });
+}
+
+window.deleteImage = function (button, event) {
+    event.preventDefault();
+    var imageBox = $(button).parent('.image-box');
+    var route = $(button).data('route');
+
+    $.ajax({
+        url: route,
+        type: 'DELETE',
+        data: {},
+        timeout: ajaxTimeout,
+        success: function (result) {
+            if (result.success === true) {
+                $(imageBox).remove();
             } else {
                 systemAlert('error', result.message);
                 console.log(result);

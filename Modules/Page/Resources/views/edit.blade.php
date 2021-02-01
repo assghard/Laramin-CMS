@@ -137,7 +137,7 @@
             <div id="gallery-accordion" class="system-accordion">
                 <div class="card">
                     <div class="card-header" id="headingGallery" data-toggle="collapse" data-target="#gallery-images" aria-expanded="false" aria-controls="gallery-images">
-                        <h5 class="mb-0">Assigned media</h5>
+                        <h5 class="mb-0">Assigned media ({{ $page->getMedia('gallery')->count() }})</h5>
                     </div>
                     <div id="gallery-images" class="collapse" aria-labelledby="headingGallery" data-parent="#gallery-accordion">
                         <div class="card-body">

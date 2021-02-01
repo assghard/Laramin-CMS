@@ -8,6 +8,7 @@ use Modules\Page\Entities\Page;
 use Modules\Page\Http\Requests\CreatePageRequest;
 use Modules\Page\Http\Requests\UpdatePageRequest;
 use Modules\Page\Services\PageService;
+use Modules\Core\Entities\SystemErrorEntity;
 
 class PageController extends Controller
 {
@@ -34,14 +35,20 @@ class PageController extends Controller
     {
         $page = Page::with(['media'])->findOrFail($id);
 
-        // $page->clearMediaCollection('gallery');
-
         return view('page::edit', compact('page'));
     }
 
     public function update($id, UpdatePageRequest $request, PageService $pageService)
     {
-        $page = $pageService->updatePage($id, $request);
+        try {
+            $page = $pageService->updatePage($id, $request);
+        } catch (\Throwable $th) {
+            SystemErrorEntity::createEntity('PageService updatePage ERROR', [
+                'message' => $th->getMessage()
+            ]);
+
+            return redirect()->back()->withError('Something went wrong! Check System errors to find out more');
+        }
         
         if (isset($request->button) && $request->button == 'index') {
             return redirect()->route('dashboard.pages.index')->withSuccess('Page has been updated');

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Page\Scopes\PageScope;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Image\Manipulations;
 
 class Page extends Model implements HasMedia
 {
@@ -48,12 +49,22 @@ class Page extends Model implements HasMedia
         static::addGlobalScope(new PageScope()); // frontend Page scope: only active pages are available for user
     }
 
+    /**
+     * Method describes all medias for this model.
+     * 
+     * There are a lot of manipulations you can do with images. 
+     * See Spatie\Image\Manipulations for details. Cool and useful effects: sepia, pixelate(5), greyscale(), fit
+     * 
+     * Command: `php artisan media-library:regenerate` regenerates all media conversions 
+     * 
+     * @return void
+     */
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('main')->singleFile();
         $this->addMediaCollection('gallery');
 
-        $this->addMediaConversion('thumb')->width(600)->height(400)->sharpen(10);
+        $this->addMediaConversion('thumb')->width(600)->height(400)->fit(Manipulations::FIT_CROP, 600, 400);
     }
 
     public function getMainImage()

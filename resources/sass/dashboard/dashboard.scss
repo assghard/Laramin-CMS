@@ -1,8 +1,9 @@
 // Vendor
 @import '../variables';
-@import '~bootstrap/scss/bootstrap'; //~bootstrap/dist/css/bootstrap.min.css
+@import '~bootstrap/scss/bootstrap';
 @import "../../../node_modules/open-iconic/font/css/open-iconic-bootstrap.scss";
 @import 'panelbox';
+@import "~lightbox2/dist/css/lightbox.min.css";
 
 body {
 	font-size: .875rem;
@@ -115,6 +116,24 @@ textarea{
 			cursor: pointer;
 			&:hover{
 				color: $blue;
+			}
+		}
+	}
+}
+
+.image-box{
+	position: relative;
+	.delete-image-btn{
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		cursor: pointer;
+		font-size: 1.1rem;
+		span{
+			background: #fff;
+			padding: 5px;
+			&:hover{
+				color: $red;
 			}
 		}
 	}

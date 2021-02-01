@@ -36,7 +36,12 @@ class MediaController extends Controller
 
     public function destroy($id)
     {
-        //
+        $media = Media::findOrFail($id)->delete($id);
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Media has been deleted from database and disk'
+        ]);
     }
 
     public function updateImageBox($id, Request $request) 
