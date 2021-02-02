@@ -27,24 +27,13 @@
                 <div class="form-group {{ $errors->has('caption') ? 'has-error' : '' }}">
                     <label>Caption</label>
                     <textarea name="caption" id="caption" rows="2" class="form-control {{ $errors->has('caption') ? 'is-invalid' : '' }}">{{ old('caption') }}</textarea>
-                    {{-- <input id="caption" type="text" class="form-control {{ $errors->has('caption') ? 'is-invalid' : '' }}" name="caption" value="{{ old('caption') }}" /> --}}
                     {!! $errors->first('caption', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                 </div>
-                <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
-                    <label>Body</label>
-                    <textarea name="body" id="body" rows="5" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}">{{ old('body') }}</textarea>
-                    {!! $errors->first('body', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
-                </div>
-
                 <hr />
-                <div id="accordion">
+                <div id="accordion" class="system-accordion">
                     <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <div class="btn btn-link" data-toggle="collapse" data-target="#meta-data" aria-expanded="false" aria-controls="meta-data">
-                                    Meta data
-                                </div>
-                            </h5>
+                        <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#meta-data" aria-expanded="false" aria-controls="meta-data">
+                            <h5 class="mb-0">Meta data</h5>
                         </div>
                         <div id="meta-data" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
@@ -65,12 +54,8 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <div class="btn btn-link collapsed" data-toggle="collapse" data-target="#og-data" aria-expanded="false" aria-controls="og-data">
-                                    Open graph data
-                                </div>
-                            </h5>
+                        <div class="card-header collapsed" id="headingTwo"data-toggle="collapse" data-target="#og-data" aria-expanded="false" aria-controls="og-data">
+                            <h5 class="mb-0">Open graph data</h5>
                         </div>
                         <div id="og-data" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
@@ -89,7 +74,7 @@
                                 <div class="form-group {{ $errors->has('og_type') ? 'has-error' : '' }}">
                                     <label>Open graph type</label>
                                     <input id="og_type" type="text" class="form-control {{ $errors->has('og_type') ? 'is-invalid' : '' }}"
-                                        name="og_type" value="{{ old('og_type', 'article') }}" />
+                                        name="og_type" value="{{ old('og_type') }}" />
                                     {!! $errors->first('og_type', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                                 </div>
                             </div>
@@ -125,6 +110,13 @@
             </div>
         </div>
 
+        <hr />
+        <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
+            <label>Body</label>
+            <textarea name="body" id="body" rows="20" class="tinymce-editor form-control {{ $errors->has('body') ? 'is-invalid' : '' }}">{{ old('body') }}</textarea>
+            {!! $errors->first('body', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
+        </div>
+
         <div class="box-footer border-top pt-2 d-block my-4">
             <button type="submit" class="btn btn-primary btn-flat">Submit</button>
             <button class="btn btn-secondary btn-flat" name="button" type="reset">Reset</button>
@@ -132,3 +124,7 @@
         </div>
     </form>
 @stop
+
+@push('scripts')
+    <script src="{{ mix('js/tinymce-editor.js') }}"></script>
+@endpush

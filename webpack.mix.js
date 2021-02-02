@@ -21,3 +21,11 @@ mix.sass('resources/sass/page/subpage-stack.scss', 'public/css').minify('public/
 // Dashboard
 mix.sass('resources/sass/dashboard/dashboard.scss', 'public/css').minify('public/css/dashboard.min.css');
 mix.js(['resources/js/dashboard/dashboard.js'], 'public/js/dashboard.js');
+mix.js(['resources/js/dashboard/tinymce-editor.js'], 'public/js/tinymce-editor.js');
+
+mix.copyDirectory('node_modules/tinymce/icons', 'public/js/icons');
+mix.copyDirectory('node_modules/tinymce/plugins', 'public/js/plugins');
+mix.copyDirectory('node_modules/tinymce/skins', 'public/js/skins');
+mix.copyDirectory('node_modules/tinymce/themes', 'public/js/themes');
+mix.copy('node_modules/tinymce/jquery.tinymce.min.js', 'public/js/jquery.tinymce.min.js');
+mix.copy('node_modules/tinymce/tinymce.min.js', 'public/js/tinymce.min.js');

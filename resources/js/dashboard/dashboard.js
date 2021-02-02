@@ -30,28 +30,6 @@ window.systemAlert = function (type, message) {
     });
 }
 
-// window.btnConfirmation = function (button, event) {
-//     event.preventDefault();
-//     swal.fire({
-//         text: button.message,
-//         showCancelButton: true,
-//         confirmButtonColor: '#d33',
-//         cancelButtonColor: '#1D5080',
-//         confirmButtonText: 'Yes',
-//         cancelButtonText: 'Close',
-//         focusCancel: true,
-//         timer: 10000,
-//         timerProgressBar: true,
-//         allowOutsideClick: () => {
-//             swal.close();
-//         }
-//     }).then(function (btn) {
-//         if (btn.value && btn.value === true) { // accept
-//             window.location.href = button.href;
-//         }
-//     }).catch(swal.noop);
-// };
-
 window.deleteEntity = function (route, event, returnUrl = null) {
     event.preventDefault();
     swal.fire({
@@ -162,6 +140,28 @@ window.deleteImage = function (button, event) {
         console.log(err);
     });
 }
+
+// window.btnConfirmation = function (button, event) {
+//     event.preventDefault();
+//     swal.fire({
+//         text: button.message,
+//         showCancelButton: true,
+//         confirmButtonColor: '#d33',
+//         cancelButtonColor: '#1D5080',
+//         confirmButtonText: 'Yes',
+//         cancelButtonText: 'Close',
+//         focusCancel: true,
+//         timer: 10000,
+//         timerProgressBar: true,
+//         allowOutsideClick: () => {
+//             swal.close();
+//         }
+//     }).then(function (btn) {
+//         if (btn.value && btn.value === true) { // accept
+//             window.location.href = button.href;
+//         }
+//     }).catch(swal.noop);
+// };
 
 // const app = new Vue({
 //     el: '#app',

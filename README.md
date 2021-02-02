@@ -84,5 +84,3 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * check all config files in config folder
 * check/add media allowed extensions
 * Add lian-yue/vue-upload-component
-* Add editor in dashboard
-* Add lightbox for image box thumbs

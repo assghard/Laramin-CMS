@@ -30,12 +30,6 @@
                     <textarea name="caption" id="caption" rows="2" class="form-control {{ $errors->has('caption') ? 'is-invalid' : '' }}">{{ old('caption', $page->caption) }}</textarea>
                     {!! $errors->first('caption', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                 </div>
-                <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
-                    <label>Body</label>
-                    <textarea name="body" id="body" rows="5" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}">{{ old('body', $page->body) }}</textarea>
-                    {!! $errors->first('body', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
-                </div>
-
                 <hr />
                 <div id="accordion" class="system-accordion">
                     <div class="card">
@@ -129,6 +123,12 @@
                 </div>
             </div>
         </div>
+        <hr />
+        <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
+            <label>Body</label>
+            <textarea name="body" id="body" rows="20" class="tinymce-editor form-control {{ $errors->has('body') ? 'is-invalid' : '' }}">{{ old('body', $page->body) }}</textarea>
+            {!! $errors->first('body', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
+        </div>
         <hr class="mt-3" />
         <h5>Gallery</h5>
         @include('media::inputs.multiple', ['name' => 'gallery'])
@@ -165,3 +165,7 @@
         </div>
     </form>
 @stop
+
+@push('scripts')
+    <script src="{{ mix('js/tinymce-editor.js') }}"></script>
+@endpush
