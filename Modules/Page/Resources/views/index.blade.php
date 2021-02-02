@@ -28,6 +28,11 @@
                         <td>{{ $page->created_at }}</td>
                         <td>
                             <a href="{{ route('dashboard.pages.edit', $page->id) }}" class="btn btn-primary"><span class="oi oi-pencil"></span></a>
+                            @if ($page->is_homepage == 1)
+                                <a href="{{ route('page.homepage') }}" class="btn btn-info" target="_blank"><span class="oi oi-eye"></span></a>
+                            @else
+                                <a href="{{ route('page.subpage', $page->slug) }}" class="btn btn-info" target="_blank"><span class="oi oi-eye"></span></a>
+                            @endif
                             <button class="btn btn-danger" onclick="deleteEntity('{{ route('dashboard.pages.delete', $page->id) }}', event)"><span class="oi oi-trash"></span></button>
                         </td>
                     </tr>
