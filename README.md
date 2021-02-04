@@ -86,3 +86,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * Add lian-yue/vue-upload-component
 * add indisposable library
 * add settings seeder with basic settings
+* Menu module
+* Blog module
