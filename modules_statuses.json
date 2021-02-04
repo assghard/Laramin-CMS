@@ -3,5 +3,6 @@
     "Page": true,
     "Blog": true,
     "Dashboard": true,
-    "Media": true
+    "Media": true,
+    "Menu": true
 }
