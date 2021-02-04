@@ -14,8 +14,6 @@ class SettingsController extends Controller
         $techBreakConfig = technical_break_config();
         $ipAddress = (array_key_exists('REMOTE_ADDR', $_SERVER)) ? $_SERVER['REMOTE_ADDR'] : NULL;
 
-        // TODO: add settings seeder with basic settings
-
         return view('dashboard::settings.index', compact('entities', 'techBreakConfig', 'ipAddress'));
     }
 

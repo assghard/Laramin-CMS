@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'atCMS'), // TODO: from settings
+    'name' => env('APP_NAME', 'atCMS'),
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +68,7 @@ return [
     */
 
     
-    'timezone' => env('APP_TIMEZONE', 'UTC'), // TODO: from settings
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'), // TODO: from settings
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
