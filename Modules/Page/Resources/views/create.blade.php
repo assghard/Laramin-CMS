@@ -74,7 +74,7 @@
                                 <div class="form-group {{ $errors->has('og_type') ? 'has-error' : '' }}">
                                     <label>Open graph type</label>
                                     <input id="og_type" type="text" class="form-control {{ $errors->has('og_type') ? 'is-invalid' : '' }}"
-                                        name="og_type" value="{{ old('og_type') }}" />
+                                        name="og_type" value="{{ old('og_type', 'Article') }}" />
                                     {!! $errors->first('og_type', '<span class="invalid-feedback d-block"><b>:message</b></span>') !!}
                                 </div>
                             </div>

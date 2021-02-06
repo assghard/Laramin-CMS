@@ -5,11 +5,31 @@
 @import '~bootstrap/scss/bootstrap';
 
 body{
-    padding-top: 60px;
+    padding-top: 55px;
 }
-
 
 div.btn,
 button.btn{
     border-radius: 0;
+}
+
+.content{
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px -8px #000000;
+    img,
+    iframe{
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.text-center-box {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    position: relative;
 }

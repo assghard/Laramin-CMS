@@ -19,9 +19,6 @@
                 <li class="nav-item {{ $link1 ?? '' }}">
                     <a class="nav-link" href="">Link 1</a>
                 </li>
-                <li class="nav-item {{ $link1 ?? '' }}">
-                    <a class="nav-link" href="">TODO: menu from DB and cache()</a>
-                </li>
                 <li class="nav-item dropdown {{ $link12 ?? '' }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">

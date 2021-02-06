@@ -88,3 +88,18 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * add settings seeder with basic settings
 * Menu module
 * Blog module
+* AMP page
+
+Media:::::
+PHP
+memory_limit = 512M
+post_max_size = 125M
+upload_max_filesize = 100M
+
+MySQL
+max_allowed_packet
+
+config/media-library.php
+'max_file_size' => 1024 * 1024 * 10 // 10MB
+
+

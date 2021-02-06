@@ -52,7 +52,7 @@ class MediaController extends Controller
         }
 
         try {
-            if ($media->file_name != $request->file_name) {
+            if ($media->getFilenameWithoutExtension() != $request->file_name) {
                 $media->file_name = mb_strtolower(Str::slug($request->file_name, '_')).'.'.$media->getExtensionAttribute();
             }
 

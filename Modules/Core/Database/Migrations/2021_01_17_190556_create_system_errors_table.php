@@ -17,7 +17,7 @@ class CreateSystemErrorsTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
 
             $table->timestamps();
         });

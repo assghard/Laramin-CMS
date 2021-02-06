@@ -17,9 +17,7 @@
 
         @show
 
-        <title>
-            @section('title')@show
-        </title>
+        <title>@section('title')@show</title>
 
         @stack('style')
 

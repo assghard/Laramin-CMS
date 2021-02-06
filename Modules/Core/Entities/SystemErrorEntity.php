@@ -19,10 +19,14 @@ class SystemErrorEntity extends Model
 
     public static function createEntity($name, $data = []) 
     {
-        self::create([
-            'name' => $name,
-            'description' => $data
-        ]);
+        try {
+            self::create([
+                'name' => $name,
+                'description' => $data
+            ]);
+        } catch (\Throwable $th) {
+            // TODO: log to file
+        }
 
         if (env('APP_ENV') == 'production') {
             try {

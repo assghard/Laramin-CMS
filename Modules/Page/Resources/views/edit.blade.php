@@ -4,6 +4,9 @@
 
 @section('content')
     <a href="{{ route('dashboard.pages.index') }}">< Back to list</a>
+    <div class="text-right">
+        <a href="{{ route('page.subpage', $page->slug) }}" class="btn btn-link" target="_blank">See subpage <span class="oi oi-eye"></span></a>
+    </div>
     <form action="{{ route('dashboard.pages.update', $page->id) }}" method="POST" enctype='multipart/form-data'>
         @csrf
         {{ method_field('PUT') }}
