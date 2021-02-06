@@ -16,6 +16,7 @@ I tried to create it as simple as it can be, using as less packages as possible 
 - [Installation](#installation)
 - [Examples and demo](#examples-and-demo)
 - [TODO list](#todo-list)
+- [Model media base usage](#model-media-base-usage)
 - [Licence](#Licence)
 
 ## Laramin CMS modules
@@ -27,13 +28,22 @@ I tried to create it as simple as it can be, using as less packages as possible 
  - Blog (work in progress)
 
 ## Used packages and libraries
- - Laravel framework 8.26.1: `laravel/framework` 
- - Laravel modules: `nwidart/laravel-modules`
- - Spatie medialibrary: `spatie/laravel-medialibrary`
+### Backend and PHP:
+ - Laravel framework 8.26.1: `laravel/framework`. https://laravel.com/
+ - Laravel modules: `nwidart/laravel-modules`. https://nwidart.com/laravel-modules/v6/introduction
+ - Spatie medialibrary: `spatie/laravel-medialibrary`. https://spatie.be/docs/laravel-medialibrary/v9/introduction
+### Frontend and JS:
+ - laravel-mix
+ - Bootstrap 4
+ - jQuery
+ - open-iconic
+ - lightbox2
+#### Dashboard additional packages
+ - sweetalert2
+ - tinymce
+
 
  ## Requirements
-- Web server: apache / nginx / ...
-- MySQL / PostgreSQL / SQLite / ...
 - PHP >= 7.3 or 8.0
 
 ## Installation
@@ -42,24 +52,51 @@ I tried to create it as simple as it can be, using as less packages as possible 
  * Install the composer vendors: `composer install`
  * Install NPM packages: `npm install`
  * Compile NPM packages: `npm run dev`
+ * Edit .env file and complete config and DB connection data:
+ ```
+APP_URL=http://laramincms.local
+APP_TIMEZONE=UTC
+APP_LOCALE=en
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laramin_cms_database
+DB_USERNAME=root
+DB_PASSWORD=
+ ```
+ * `php artisan key:generate`
  * Create new database, complete the .env file and migrate with seeders: `php artisan migrate --seed`
  * Run CMS: `php artisan serve`
 
 
 ## Examples and demo
 
+<img src="github_images/laramin_cms_dashboard.jpg" />
+<img src="github_images/laramin_cms_users.jpg" />
+<img src="github_images/laramin_cms_page_1.jpg" />
+<img src="github_images/laramin_cms_page_2.jpg" />
+<img src="github_images/tiny_mce_edit_image.jpg" />
+<img src="github_images/supgage_1.jpg" />
+<img src="github_images/subpage_gallery.jpg" />
+
 
 ## TODO list
-* TEST add mail config and test send mail
+I'm going to develop this project. All TODOs and ideas will be in this section
+
+* add mail config and test send mail
 * TEST auth and send mails, reset, register...
 * check all config files in config folder
 * check/add media allowed extensions
-* Add lian-yue/vue-upload-component
-* add indisposable library
-* add settings seeder with basic settings
+* Add settings seeder with basic settings
+* Test fresh installation
+
+* Add `lian-yue/vue-upload-component` as image uploader
+* Add `propaganistas/laravel-disposable-email` library
+* Add Google reCaptcha v2/v3 to contact page
 * Menu module
 * Blog module
-* AMP page
+* Add AMP pages (dynamic)
 
 
 ## Model media base usage
