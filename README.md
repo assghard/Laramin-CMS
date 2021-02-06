@@ -1,84 +1,55 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Laramin CMS - simple MVP Content Management System based on Laravel framework
 
 
+**Laramin CMS** is a MVP CMS (Content Management System) based on Laravel framework created for web developers to support them in creating web applications. This is a pure Laravel with `nwidart/laravel-modules`. Laramin CMS provides a basic functionality needed in every project so you don't start from the white space. It has: 
+- Homepage, subpages, contact page, send contact
+- Admin dashboard (to manage content, pages, menus, media, users, user submissions)
+- SEO features: Headers, content, meta and Open Graph data, structured Schema.org data, titles and alts for images
+
+Also it provides a few more tips like system settings, system errors, auth management, user module. 
+I tried to create it as simple as it can be, using as less packages as possible (for maintenance reasons) - only MVP functions. So you can easily develop it and implement own stuff needed in your project. 
 
 
+- [Modules](#laramin-cms-modules)
+- [Used Packages and libraries](#used-packages-and-libraries)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Examples and demo](#examples-and-demo)
+- [TODO list](#todo-list)
+- [Licence](#Licence)
+
+## Laramin CMS modules
+ - Core (basic stuff here)
+ - Dashboard
+ - Page with media and thumbs
+ - Media (minimal)
+ - Menu (work in progress)
+ - Blog (work in progress)
+
+## Used packages and libraries
+ - Laravel framework 8.26.1: `laravel/framework` 
+ - Laravel modules: `nwidart/laravel-modules`
+ - Spatie medialibrary: `spatie/laravel-medialibrary`
+
+ ## Requirements
+- Web server: apache / nginx / ...
+- MySQL / PostgreSQL / SQLite / ...
+- PHP >= 7.3 or 8.0
+
+## Installation
+ * Clone this repo: `git clone`
+ * Copy .env.example to .env file: `cp .env.example .env`
+ * Install the composer vendors: `composer install`
+ * Install NPM packages: `npm install`
+ * Compile NPM packages: `npm run dev`
+ * Create new database, complete the .env file and migrate with seeders: `php artisan migrate --seed`
+ * Run CMS: `php artisan serve`
 
 
+## Examples and demo
 
 
-=====================================================================================
-
-* Git clone
-* cp .env.example .env
-* composer install
-* npm install
-* npm run dev
-* php artisan migrate --seed
-
-
-## TODO
+## TODO list
 * TEST add mail config and test send mail
 * TEST auth and send mails, reset, register...
 * check all config files in config folder
@@ -90,16 +61,66 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * Blog module
 * AMP page
 
-Media:::::
-PHP
-memory_limit = 512M
-post_max_size = 125M
-upload_max_filesize = 100M
 
-MySQL
+## Model media base usage
+
+There is `spatie/laravel-medialibrary` installed. More information here: https://spatie.be/docs/laravel-medialibrary/v9/introduction
+
+If you are going to use Media - remember about PHP and MySQL variables:
+
+```php
+[PHP]
+memory_limit
+post_max_size
+upload_max_filesize
+
+[MySQL]
 max_allowed_packet
 
-config/media-library.php
+[config/media-library.php]
 'max_file_size' => 1024 * 1024 * 10 // 10MB
+```
+
+Register media for model (Page model example):
+```php
+    use Spatie\MediaLibrary\HasMedia;
+    use Spatie\MediaLibrary\InteractsWithMedia;
+    use Spatie\Image\Manipulations;
+    ...
+
+    class Page extends Model implements HasMedia
+{
+    use InteractsWithMedia;
+    ...
 
 
+    /**
+     * Register all media for this model with features and conversions
+     * (from Spatie\MediaLibrary\InteractsWithMedia trait)
+     * 
+     * @return void
+     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('main')->singleFile();
+        $this->addMediaCollection('gallery');
+
+        $this->addMediaConversion('thumb')->width(600)->height(400)->fit(Manipulations::FIT_CROP, 600, 400);
+    }
+
+    /**
+     * Custom method to get main image
+     */
+    public function getMainImage()
+    {
+        return $this->getMedia('main')->first();
+    }
+```
+
+There are a lot of manipulations you can do with images. See Spatie\Image\Manipulations for details. Cool and useful effects: `sepia`, `pixelate(5)`, `greyscale()`, `fit`
+
+Command: `php artisan media-library:regenerate` regenerates all media conversions
+
+## Licence
+
+MIT

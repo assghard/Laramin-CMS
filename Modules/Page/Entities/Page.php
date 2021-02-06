@@ -50,8 +50,7 @@ class Page extends Model implements HasMedia
     }
 
     /**
-     * Method describes all medias for this model.
-     * 
+     * Register all media for this model with features and conversions (from Spatie\MediaLibrary\InteractsWithMedia trait)
      * There are a lot of manipulations you can do with images. 
      * See Spatie\Image\Manipulations for details. Cool and useful effects: sepia, pixelate(5), greyscale(), fit
      * 
@@ -67,6 +66,9 @@ class Page extends Model implements HasMedia
         $this->addMediaConversion('thumb')->width(600)->height(400)->fit(Manipulations::FIT_CROP, 600, 400);
     }
 
+    /**
+     * Custom method to get main image
+     */
     public function getMainImage()
     {
         return $this->getMedia('main')->first();
