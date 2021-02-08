@@ -1,14 +1,12 @@
 # Laramin CMS - simple MVP Content Management System based on Laravel framework
 
-
-**Laramin CMS** is a MVP CMS (Content Management System) based on Laravel framework created for web developers to support them in creating web applications. This is a pure Laravel with `nwidart/laravel-modules`. Laramin CMS provides a basic functionality needed in every project so you don't start from the white space. It has: 
+**Laramin CMS** is a MVP CMS (Content Management System) based on Laravel framework created for web developers to support them in creating web applications. This is a Laravel with `nwidart/laravel-modules`, auth, dashboard, user and pages management. Laramin CMS provides a basic functionality needed in every project so you don't start from the white space. It has: 
 - Homepage, subpages, contact page, send contact
 - Admin dashboard (to manage content, pages, menus, media, users, user submissions)
 - SEO features: Headers, content, meta and Open Graph data, structured Schema.org data, titles and alts for images
 
 Also it provides a few more tips like system settings, system errors, auth management, user module. 
 I tried to create it as simple as it can be, using as less packages as possible (for maintenance reasons) - only MVP functions. So you can easily develop it and implement own stuff needed in your project. 
-
 
 - [Modules](#laramin-cms-modules)
 - [Used Packages and libraries](#used-packages-and-libraries)
@@ -42,7 +40,6 @@ I tried to create it as simple as it can be, using as less packages as possible 
  - sweetalert2
  - tinymce
 
-
  ## Requirements
 - PHP >= 7.3 or 8.0
 
@@ -52,6 +49,7 @@ I tried to create it as simple as it can be, using as less packages as possible 
  * Install the composer vendors: `composer install`
  * Install NPM packages: `npm install`
  * Compile NPM packages: `npm run dev`
+ * Create a new database (for example `laramin_cms_database`)
  * Edit .env file and complete config and DB connection data:
  ```
 APP_URL=http://laramincms.local
@@ -67,10 +65,19 @@ DB_PASSWORD=
  ```
  * `php artisan key:generate`
  * Create new database, complete the .env file and migrate with seeders: `php artisan migrate --seed`
- * Run CMS: `php artisan serve`
+ * Run CMS: `php artisan serve` or create a vhost/domain
 
 
 ## Examples and demo
+After migrate and seed there are 2 users created (admin and client):
+```
+Username: admin@cms.com
+Password: Admin12345!
+
+Username: client@cms.com
+Password: Client12345!
+```
+Admin user has full access to dashboard
 
 <img src="github_images/laramin_cms_dashboard.jpg" />
 <img src="github_images/laramin_cms_users.jpg" />
@@ -79,7 +86,6 @@ DB_PASSWORD=
 <img src="github_images/tiny_mce_edit_image.jpg" />
 <img src="github_images/supgage_1.jpg" />
 <img src="github_images/subpage_gallery.jpg" />
-
 
 ## TODO list
 I'm going to develop this project. All TODOs and ideas will be in this section
@@ -98,9 +104,7 @@ I'm going to develop this project. All TODOs and ideas will be in this section
 * Blog module
 * Add AMP pages (dynamic)
 
-
 ## Model media base usage
-
 There is `spatie/laravel-medialibrary` installed. More information here: https://spatie.be/docs/laravel-medialibrary/v9/introduction
 
 If you are going to use Media - remember about PHP and MySQL variables:
@@ -159,5 +163,4 @@ There are a lot of manipulations you can do with images. See Spatie\Image\Manipu
 Command: `php artisan media-library:regenerate` regenerates all media conversions
 
 ## Licence
-
 MIT
