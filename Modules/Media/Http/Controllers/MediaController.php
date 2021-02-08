@@ -46,6 +46,8 @@ class MediaController extends Controller
 
     public function updateImageBox($id, Request $request) 
     {
+        // TODO: refactor it
+
         $media = Media::find($id);
         if(empty($media)){
             return response()->json(['success' => false, 'message' => 'Media not found']);

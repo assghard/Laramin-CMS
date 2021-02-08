@@ -21,7 +21,7 @@ class DashboardDatabaseSeeder extends Seeder
         \DB::table('dashboard__settings')->insert([
             'name' => 'REGISTER_ROUTES_ENABLED',
             'value' => 0,
-            'description' => 'Customers will be able to sign up via frontend routes'
+            'description' => 'Customers will be able to sign up via frontend routes: [0 - off, 1 - on]'
         ]);
         \DB::table('users')->insert([
             'email' => 'admin@cms.com',

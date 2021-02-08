@@ -90,14 +90,10 @@ Admin user has full access to dashboard
 ## TODO list
 I'm going to develop this project. All TODOs and ideas will be in this section
 
-* add mail config and test send mail
-* TEST auth and send mails, reset, register...
-* check/add media allowed extensions
-
+* Menu module
 * Add `lian-yue/vue-upload-component` as image uploader
 * Add `propaganistas/laravel-disposable-email` library
 * Add Google reCaptcha v2/v3 to contact page
-* Menu module
 * Blog module
 * Add AMP pages (dynamic)
 
