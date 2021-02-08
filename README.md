@@ -113,6 +113,14 @@ max_allowed_packet
 
 [config/media-library.php]
 'max_file_size' => 1024 * 1024 * 10 // 10MB
+
+[config/filesystems.php]
+'media' => [ // this storage is used in media-library.php
+    'driver' => 'local',
+    'root' => public_path('media'),
+    'url' => env('APP_URL').'/media',
+    'visibility' => 'public',
+],
 ```
 
 Register media for model (Page model example):

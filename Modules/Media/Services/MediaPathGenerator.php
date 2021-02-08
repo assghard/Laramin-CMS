@@ -22,6 +22,10 @@
  * /public/media/post/10/89/image89.jpg
  * 
  * As you see, images are segregated
+ * 
+ * @author assghard
+ * @since 2021
+ * 
  */
 
 namespace Modules\Media\Services;
