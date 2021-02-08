@@ -6,7 +6,7 @@
 - SEO features: Headers, content, meta and Open Graph data, structured Schema.org data, titles and alts for images
 
 Also it provides a few more tips like system settings, system errors, auth management, user module. 
-I tried to create it as simple as it can be, using as less packages as possible (for maintenance reasons) - only MVP functions. So you can easily develop it and implement own stuff needed in your project. 
+I tried to create it as simple as it can be, using as less packages as possible (for maintenance reasons) - only MVP functions. So you can easily develop it and implement your own stuff needed in your project. 
 
 - [Modules](#laramin-cms-modules)
 - [Used Packages and libraries](#used-packages-and-libraries)
@@ -92,10 +92,7 @@ I'm going to develop this project. All TODOs and ideas will be in this section
 
 * add mail config and test send mail
 * TEST auth and send mails, reset, register...
-* check all config files in config folder
 * check/add media allowed extensions
-* Add settings seeder with basic settings
-* Test fresh installation
 
 * Add `lian-yue/vue-upload-component` as image uploader
 * Add `propaganistas/laravel-disposable-email` library

@@ -34,11 +34,15 @@
 
 @section('content')
     <div class="container">
-        <h1 class="center-text">
-            {{ $page->title }}
-        </h1>
-        
-        {!! $page->body !!}
+        <div class="content">
+            <h1>{{ $page->title }}</h1>
+
+            {!! $page->body !!}
+            <hr />
+            <div class="btn-group">
+                <a href="{{ env('BACKEND_URI') }}" class="btn btn-primary">Dashboard</a>
+            </div>
+        </div>
     </div>
 @stop
 

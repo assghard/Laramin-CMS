@@ -29,7 +29,7 @@ class PageDatabaseSeeder extends Seeder
                 - Admin dashboard (to manage content, pages, menus, media, users, user submissions)
                 - SEO features: Headers, content, meta and Open Graph data, structured Schema.org data, titles and alts for images
 Also it provides a few more tips like system settings, system errors, auth management, user module. 
-I tried to create it as simple as it can be, using as less packages as possible (for maintenance reasons) - only MVP functions. So you can easily develop it and implement own stuff needed in your project. ',
+I tried to create it as simple as it can be, using as less packages as possible (for maintenance reasons) - only MVP functions. So you can easily develop it and implement your own stuff needed in your project. ',
             'meta_title' => 'Laramin CMS homepage',
             'meta_description' => 'CMS based on Laravel for quick create a simple website',
             'og_title' => 'CMS based on Laravel for quick create a simple website',
