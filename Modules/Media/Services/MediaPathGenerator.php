@@ -21,7 +21,20 @@
  * /public/media/post/10/88/image88.jpg
  * /public/media/post/10/89/image89.jpg
  * 
- * As you see, images are segregated
+ * The structure: 
+ * - /media/post
+ *      - /10
+ *          - /87
+ *              - image87.jpg
+ *              - conversions
+ *                  - thumb87_1.jpg
+ *                  - thumb87_2.jpg
+ *                  - thumb87_3.jpg
+ *              - responsive-images
+ *                  - img87_1.jpg
+ *                  - img87_2.jpg
+ * 
+ * As you see, images are grouped and separated
  * 
  * @author assghard
  * @since 2021
