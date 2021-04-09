@@ -3,6 +3,7 @@
 namespace Modules\Page\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\ValidRecaptcha;
 
 class SendContactFormRequest extends FormRequest
 {
@@ -15,7 +16,8 @@ class SendContactFormRequest extends FormRequest
     {
         return [
             'email' => 'required|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
-            'description' => 'required|min:5'
+            'description' => 'required|min:5',
+            'g-recaptcha-response' => ['required', new ValidRecaptcha]
         ];
     }
 
@@ -26,6 +28,7 @@ class SendContactFormRequest extends FormRequest
             // 'email.regex' => 'Field format is invalid',
             // 'description.required' => 'Field is required',
             // 'description.min' => "It's not enought",
+            // 'g-recaptcha-response.required' => 'Captcha is required'
         ];
     }
 

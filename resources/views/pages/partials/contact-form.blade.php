@@ -9,7 +9,7 @@
         {!! $errors->first("description", '<span class="invalid-feedback">:message</span>') !!}
     </div>
 
-    // TODO: reCaptcha v2 here
+    @include('pages.partials.g-recaptcha-v2')
 
     <button type="submit" class="btn btn-primary btn-block">Submit</button>
 </form>
