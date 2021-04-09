@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title')Login | {{ env('APP_NAME') }} @stop
+
 @push('style')
     <link rel="stylesheet" href="{{ mix('/css/subpage-stack.css') }}" />
 @endpush
