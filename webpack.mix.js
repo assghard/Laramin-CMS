@@ -11,6 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.version();
+
 // Page and subpage stack
 mix.js(['resources/js/page/homepage-stack.js'], 'public/js/homepage-stack.js');
 mix.js(['resources/js/page/subpage-stack.js'], 'public/js/subpage-stack.js');

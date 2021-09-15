@@ -4,33 +4,33 @@ require('bootstrap');
 window.swal = require('sweetalert2');
 window.lightbox = require("lightbox2");
 
-$(function () {
+$(function() {
     $.ajaxSetup({
         headers: {
             "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").getAttribute("content")
         }
     });
 
-    $(".custom-file-input").on("change", function () {
+    $(".custom-file-input").on("change", function() {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 });
 
-window.unlockInput = function (button, input_id) {
+window.unlockInput = function(button, input_id) {
     $(button).addClass('d-none');
     $(input_id).removeAttr('readonly').focus();
 }
 
-window.systemAlert = function (type, message) {
-    swal.fire({html: message, icon: type}).then(function () {
+window.systemAlert = function(type, message) {
+    swal.fire({ html: message, icon: type }).then(function() {
         location.reload();
-    }, function () {
+    }, function() {
         location.reload();
     });
 }
 
-window.deleteEntity = function (route, event, returnUrl = null) {
+window.deleteEntity = function(route, event, returnUrl = null) {
     event.preventDefault();
     swal.fire({
         text: 'Delete this object',
@@ -45,7 +45,7 @@ window.deleteEntity = function (route, event, returnUrl = null) {
         allowOutsideClick: () => {
             swal.close();
         }
-    }).then(function (btn) {
+    }).then(function(btn) {
         if (btn.value) {
             if (btn.value === true) { // remove
                 $.ajax({
@@ -53,9 +53,9 @@ window.deleteEntity = function (route, event, returnUrl = null) {
                     type: 'DELETE',
                     data: {},
                     timeout: ajaxTimeout,
-                    success: function (result) {
+                    success: function(result) {
                         if (result.success === true) {
-                            systemAlert('success', result.message, function () {
+                            systemAlert('success', result.message, function() {
                                 if (!returnUrl) {
                                     location.reload();
                                     return;
@@ -67,11 +67,11 @@ window.deleteEntity = function (route, event, returnUrl = null) {
                             console.log(result);
                         }
                     },
-                    error: function (err) {
+                    error: function(err) {
                         systemAlert('error', 'ERROR! Something went wrong');
                         console.log(err);
                     }
-                }).fail(function (err) {
+                }).fail(function(err) {
                     systemAlert('error', 'ERROR! Something went wrong');
                     console.log(err);
                 });
@@ -80,13 +80,13 @@ window.deleteEntity = function (route, event, returnUrl = null) {
     }).catch(swal.noop);
 }
 
-window.saveImageData = function(button, event){
+window.saveImageData = function(button, event) {
     event.preventDefault();
     var imageBox = $(button).parent('.image-box');
     var route = $(button).data('route');
 
     var imageData = {};
-    $(imageBox).find('input').each(function(iterator, element){
+    $(imageBox).find('input').each(function(iterator, element) {
         imageData[$(element).data('name')] = element.value;
     });
 
@@ -95,7 +95,7 @@ window.saveImageData = function(button, event){
         type: 'PUT',
         data: imageData,
         timeout: ajaxTimeout,
-        success: function (result) {
+        success: function(result) {
             if (result.success === true) {
                 swal.fire({ html: result.message, icon: 'success', timer: 2000, timerProgressBar: true });
             } else {
@@ -103,19 +103,19 @@ window.saveImageData = function(button, event){
                 console.log(result);
             }
         },
-        error: function (err) {
+        error: function(err) {
             systemAlert('error', 'ERROR! Something went wrong');
             console.log(err);
         }
-    }).fail(function (err) {
+    }).fail(function(err) {
         systemAlert('error', 'ERROR! Something went wrong');
         console.log(err);
     });
 }
 
-window.deleteImage = function (button, event) {
+window.deleteImage = function(button, event) {
     event.preventDefault();
-    var imageBox = $(button).parent('.image-box');
+    var imageBox = $(button).parents('.image-box');
     var route = $(button).data('route');
 
     $.ajax({
@@ -123,7 +123,7 @@ window.deleteImage = function (button, event) {
         type: 'DELETE',
         data: {},
         timeout: ajaxTimeout,
-        success: function (result) {
+        success: function(result) {
             if (result.success === true) {
                 $(imageBox).remove();
             } else {
@@ -131,11 +131,11 @@ window.deleteImage = function (button, event) {
                 console.log(result);
             }
         },
-        error: function (err) {
+        error: function(err) {
             systemAlert('error', 'ERROR! Something went wrong');
             console.log(err);
         }
-    }).fail(function (err) {
+    }).fail(function(err) {
         systemAlert('error', 'ERROR! Something went wrong');
         console.log(err);
     });
